@@ -2,11 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-    Id: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     Name: {
         type: String,
         required:true
@@ -27,7 +22,7 @@ const UserSchema = new Schema({
         type: Date
     },
     Email: {
-        type: Email,
+        type: String,
         required: true,
         unique: true
     },
@@ -37,9 +32,10 @@ const UserSchema = new Schema({
     Avatar: {
         type: String
     },
-    AccountUsername: {
+    AccountId: {
         type: Schema.Types.ObjectId,
-        ref: 'Account'
+        ref: 'Account',
+        unique:true
     }
 })
 

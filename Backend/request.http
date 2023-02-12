@@ -16,5 +16,16 @@ Content-Type: application/json
     "Role": "Staff"
 }
 ###
-POST http://localhost:5000/api/auth/createAll
+POST http://localhost:5000/api/dataset/createAccount
 
+###
+POST http://localhost:5000/api/dataset/createUserProfile
+
+###
+POST http://localhost:5000/api/dataset/createCategory
+
+###
+POST http://localhost:5000/api/dataset/createIdea
+
+###
+POST http://localhost:5000/api/dataset/createComment
