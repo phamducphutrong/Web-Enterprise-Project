@@ -1,15 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .header {
-    display: inline-block;
+    height: 100px;
+    width: 90%;
+    margin: 20px auto;
 }
 
 .logoAndName {
+    float: left;
     width: 20%;
 }
 
-.search {
+.searchWrapper {
+    float: left;
     width: 60%;
+    padding: 15px 5%;
+    height: 80px;
+
 }
 
 .notifyAndDropdown {
+    float: right;
     width: 20%;
+}
+
+.logoWrapper {
+    float: left;
+    width: 50%;
+}
+
+.logoWrapper .logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.nameWrapper {
+    float: right;
+    width: 50%;
+    border-radius: 10%;
+    border: 1px solid black;
+}
+
+.nameWrapper .name {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchWrapper .search {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    padding: 7px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.notifyAndDropdown .notify {
+    float: left;
+    width: 50%;
+    background-color: white;
+    border: none;
+    height: 80px;
+    padding-right: 5px;
+}
+
+.notify img {
+    float: right;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 50%;
+    height: 50px;
+}
+
+.notifyAndDropdown .dropdown {
+    float: right;
+    width: 50%;
+    background-color: white;
+    border: none;
+    height: 80px;
+    padding-left: 5px;
+}
+
+.dropdown img {
+    float: left;
+    border: 1px solid gray;
+    padding: 1px;
+    border-radius: 50%;
+    height: 50px;
+}
+
+.body {
+    height: 500px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.otherFunctionsWrapper {
+    float: left;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 500px;
+    width: 20%;
+}
+
+.infomationWrapper {
+    float: left;
+    width: 60%;
+    height: 500px;
+    padding: 0 5%;
+}
+
+.otherCategoriesWrapper {
+    float: right;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 500px;
+    width: 20%;
+}
+
+.otherFunctionsWrapper .otherFunctions {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.information {
+    height: 500px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.categoryName {
+    text-align: center;
+    font-size: 40px;
+    padding: 10px 0;
+}
+
+.information table {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.information th,td {
+    border: 1px solid black;
+
+}
+
+.information th {
+    width: 20%;
+    height: 50px;
+}
+
+.information td {
+    width: 80%;
+    height: 70px;
+    text-align: center;
+}
+
+.information table tr:first-child th {
+    border-top-left-radius: 20px;
+}
+
+.information table tr:first-child td {
+    border-top-right-radius: 20px;
+}
+
+.information table tr:last-child th {
+    border-bottom-left-radius: 20px;
+}
+
+.information table tr:last-child td {
+    border-bottom-right-radius: 20px;
+}
+
+.actionsWrapper {
+    width: 90%;
+    margin: 20px auto 0 auto;
+}
+
+.actionsWrapper .add {
+    float: left;
+    width: 50%;
+    height: 70px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px 0 0 20px;
+}
+
+.actionsWrapper .delete {
+    float: right;
+    width: 50%;
+    height: 70px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 0 20px 20px 0;
+}
+
+.actionsWrapper img{
+    width: 20px;
+}
+
+.otherCategoriesWrapper div {
+    text-align: center;
+    font-size: 40px;
+    padding: 10px 0;
+}
+
+.otherCategoriesWrapper ul{
+    list-style: none;
+
+}
+
+.otherCategoriesWrapper li {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc((500px - 66px) / 4);
+    border-top: 1px solid black;
 }
