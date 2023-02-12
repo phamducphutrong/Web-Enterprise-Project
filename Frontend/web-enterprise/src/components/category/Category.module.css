@@ -1,0 +1,15 @@
+.header {
+    display: inline-block;
+}
+
+.logoAndName {
+    width: 20%;
+}
+
+.search {
+    width: 60%;
+}
+
+.notifyAndDropdown {
+    width: 20%;
+}

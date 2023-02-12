@@ -1,9 +1,10 @@
-import './App.css';
-
+import style from './App.module.css';
+import Category from './components/category/Category';
 function App() {
   return (
     <div className="App">
-      Thấy dòng chữ này là chạy được
+      <div className={style.Category}>Hello</div>
+      <Category/>
     </div>
   );
 }
