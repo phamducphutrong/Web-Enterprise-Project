@@ -117,6 +117,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
 // @access Private
 router.get('/home', verifyToken, async (req, res) => {
 	try {
+        
 		const ideas = await Idea.find().sort({createdAt: -1}).populate('Category', [
 			'Title'
 		])
