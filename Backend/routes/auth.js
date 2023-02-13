@@ -65,7 +65,7 @@ router.post('/login',async(req,res)=>{
     try{
         const userValid = await Account.findOne({Username})
         if(!userValid) {
-            return res.status(400).json({success:false,message:"Username is invalid",Username})
+            return res.status(400).json({success:false,message:"Username or password is invalid",Username})
         }
         const passwordValid = await argon2.verify(userValid.Password, Password)
         if(!passwordValid)
@@ -73,10 +73,16 @@ router.post('/login',async(req,res)=>{
             return res.status(400).json({success:false,message:"Username or password is invalid",Username,
             Password})
         }
+        if(userValid.Role != Role) return res.status(400).json({success:false,message:"Your account does not have this permission"})
         const accessToken = token.sign(
-			{ Username: Username._id },
+			{ userId: userValid._id },
 			process.env.ACCESS_TOKEN_SECRET
 		)
+        if (userValid.Role === 'Administrator') {
+            return res.redirect('/admin');
+        } else if (userValid.Role === 'User') {
+            return res.redirect('/user');
+        }
         return res.status(200).json({
             success: true,
             message: "Login successful",

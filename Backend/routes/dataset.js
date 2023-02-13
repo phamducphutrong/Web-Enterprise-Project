@@ -30,18 +30,6 @@ router.post('/createAccount',async(req,res)=>{
     });
 })
 
-router.post('/createUserProfile',async(req,res)=>{
-    const user = [
-        { "Name": "Le Thi Phuong Anh2", "Gender": "Female", "PhoneNumber":"0962986806", "DoB": "2002-12-10", "Email":"phuongan2h@gmail.com", "Department":"Marketing","Avatar":"../Public/Avatar/avt.jpg","AccountUsername":"63e7aa0998d9661602bb0a5c" }
-    ];
-    User.create(user, function(error, documents) {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("Data inserted successfully");
-        }
-    });
-})
 
 router.post('/createUserProfile',async(req,res)=>{
     const user = [
