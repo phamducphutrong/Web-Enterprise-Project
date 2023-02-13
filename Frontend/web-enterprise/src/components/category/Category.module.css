@@ -1,105 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.header {
-    height: 100px;
-    width: 90%;
-    margin: 20px auto;
-}
-
-.logoAndName {
-    float: left;
-    width: 20%;
-}
-
-.searchWrapper {
-    float: left;
-    width: 60%;
-    padding: 15px 5%;
-    height: 80px;
-
-}
-
-.notifyAndDropdown {
-    float: right;
-    width: 20%;
-}
-
-.logoWrapper {
-    float: left;
-    width: 50%;
-}
-
-.logoWrapper .logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
-
-.nameWrapper {
-    float: right;
-    width: 50%;
-    border-radius: 10%;
-    border: 1px solid black;
-}
-
-.nameWrapper .name {
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchWrapper .search {
-    font-size: 18px;
-    width: 100%;
-    text-align: center;
-    padding: 7px 0;
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 50px;
-}
-
-.notifyAndDropdown .notify {
-    float: left;
-    width: 50%;
-    background-color: white;
-    border: none;
-    height: 80px;
-    padding-right: 5px;
-}
-
-.notify img {
-    float: right;
-    border: 1px solid gray;
-    padding: 5px;
-    border-radius: 50%;
-    height: 50px;
-}
-
-.notifyAndDropdown .dropdown {
-    float: right;
-    width: 50%;
-    background-color: white;
-    border: none;
-    height: 80px;
-    padding-left: 5px;
-}
-
-.dropdown img {
-    float: left;
-    border: 1px solid gray;
-    padding: 1px;
-    border-radius: 50%;
-    height: 50px;
-}
-
 .body {
     height: 500px;
     width: 90%;
@@ -112,13 +10,14 @@
     border-radius: 20px;
     height: 500px;
     width: 20%;
+    box-sizing: border-box;
 }
 
 .infomationWrapper {
     float: left;
     width: 60%;
     height: 500px;
-    padding: 0 5%;
+    box-sizing: border-box;
 }
 
 .otherCategoriesWrapper {
@@ -127,6 +26,7 @@
     border-radius: 20px;
     height: 500px;
     width: 20%;
+    box-sizing: border-box;
 }
 
 .otherFunctionsWrapper .otherFunctions {
@@ -140,11 +40,12 @@
     height: 500px;
     border: 1px solid black;
     border-radius: 20px;
+    margin: 0 5%;
 }
 
 .categoryName {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     padding: 10px 0;
 }
 
@@ -199,6 +100,7 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 20px 0 0 20px;
+    box-sizing: border-box;
 }
 
 .actionsWrapper .delete {
@@ -208,28 +110,30 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 0 20px 20px 0;
+    box-sizing: border-box;
 }
 
 .actionsWrapper img{
     width: 20px;
 }
 
-.otherCategoriesWrapper div {
+.otherCategoriesWrapper .label {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     padding: 10px 0;
 }
 
 .otherCategoriesWrapper ul{
     list-style: none;
-
+    margin: 0;
 }
 
 .otherCategoriesWrapper li {
+    margin: 0;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc((500px - 66px) / 4);
+    height: calc((500px - 56px) / 4);
     border-top: 1px solid black;
 }
