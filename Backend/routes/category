@@ -4,7 +4,9 @@ const verifyToken = require('../middleware/auth')
 const Category = require('../models/Category')
 const router = require('./auth')
 
-
+// @route GET api/category
+// @desc Get all category
+// @access Private
 router.get('/', async (req, res) => {
 	try {
 		const categories = await Category.find()

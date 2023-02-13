@@ -37,3 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3Y
 ### 
 GET http://localhost:5000/api/category/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzMTE5MTB9.sY-2YROtz5vTcaC-VlGwtfdmJFVc7vW_r40_Apvxa1I
+
+### 
+GET http://localhost:5000/api/idea
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzMTE5MTB9.sY-2YROtz5vTcaC-VlGwtfdmJFVc7vW_r40_Apvxa1I
