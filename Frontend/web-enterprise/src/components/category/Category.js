@@ -2,7 +2,6 @@ import Header from '../header/Header'
 import style from './Category.module.css';
 import addIcon from '../../assets/images/add.png'
 import deleteIcon from '../../assets/images/delete.png'
-import { CategoryContext } from '../../contexts/CategoryContext';
 
 const Category = () => {
   return (
