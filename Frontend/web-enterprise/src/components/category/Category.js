@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import Header from '../header/Header'
 import style from './Category.module.css';
 import addIcon from '../../assets/images/add.png'
 import deleteIcon from '../../assets/images/delete.png'
-import Nav from '../navigation/Nav'
+import { CategoryContext } from '../../contexts/CategoryContext';
 
-function Category() {
-
+const Category = () => {
   return (
     <div className={style.wrapper}>
-      <Nav/>
+      <Header/>
       <div className={style.body}>
         <div className={style.otherFunctionsWrapper}>
           <div className={style.otherFunctions}>Cái này để categories của các chức năng khác</div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Nav from '../navigation/Nav'
+import Header from '../header/Header'
 import "./Homepage.css";
 
 function Homepage() {
@@ -25,7 +25,7 @@ function Homepage() {
 
     return (
         <div>
-            <Nav />
+            <Header />
             <div className="container">
                 <div className="left-sidebar">
                     <ul>

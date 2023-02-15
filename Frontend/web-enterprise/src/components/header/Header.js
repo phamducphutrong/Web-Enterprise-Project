@@ -1,8 +1,7 @@
-import "./Nav.css";
-
 import React, { useState, useEffect } from "react";
+import "./Header.css";
 
-const Nav = () => {
+const Header = () => {
 	const [fixed, setFixed] = useState(false);
 
 	useEffect(() => {
@@ -51,4 +50,4 @@ const Nav = () => {
 };
 
 
-export default Nav;
+export default Header;
