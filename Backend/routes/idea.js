@@ -3,13 +3,18 @@ const Schema = express.Router()
 const verifyToken = require('../middleware/auth')
 const Idea = require('../models/Idea')
 const User = require('../models/User')
+const CommentIdea = require('../models/CommentIdea')
 const router = require('./auth')
 
+const now = new Date()
+const options = { timeZone: 'Asia/Ho_Chi_Minh'}
+const localTime = now.toLocaleString('en-US', options)
+console.log(now)
 // @route POST api/ideas
 // @desc Create idea
 // @access Private
 router.post('/', verifyToken, async(req, res) => {
-    const{ Title, Description, LastEdition } = req.body
+    const{ Title, Description, UserId, CategoryId } = req.body
 
     if(!Title)
     return res.status(400).json({success: false, message: 'Title is required!'})
@@ -18,9 +23,9 @@ router.post('/', verifyToken, async(req, res) => {
         const newIdea = new Idea({
             Title, 
             Description, 
-            LastEdition, 
-            UserId: req.UserId,
-            CategoryId: '63e91195e2f49701e0175481'
+            LastEdition: now, 
+            UserId: UserId,
+            CategoryId: CategoryId
         })
 
         await newIdea.save()
@@ -48,29 +53,30 @@ router.get('/', async (req, res) => {
 // @route PUT api/idea
 // @desc Update idea
 // @access Private
-router.post('/:id', verifyToken, async(req, res) => {
-    const{ Title, Description, LastEdition } = req.body
+router.put('/:id',verifyToken, async(req, res) => {
+    const{ Title, Description} = req.body
 
-    if(!Title)
-    return res.status(400).json({success: false, message: 'Title is required!'})
-
+    if(!Title) 
+    {
+        return res.status(400).json({success: false, message: 'Title is required!',Title,Description})
+    }
     try {
-        let updatedPost = {
+        let updatedIdea = {
             Title,
             Description,
-            LastEdition,
+            LastEdition: now
         }
 
-        const postUpdateCondition = { _id: req.params.id, user: req.UserId }
+        const ideaUpdateCondition = { _id: req.params.id }
 
-		updatedPost = await Post.findOneAndUpdate(
-			postUpdateCondition,
-			updatedPost,
+		updatedIdea = await Idea.findOneAndUpdate(
+			ideaUpdateCondition,
+			updatedIdea,
 			{ new: true }
 		)
 
         // User not authorised to update post or post not found
-		if (!updatedPost)
+		if (!updatedIdea)
         return res.status(401).json({
             success: false,
             message: 'Post not found or user not authorised'
@@ -79,7 +85,7 @@ router.post('/:id', verifyToken, async(req, res) => {
     res.json({
         success: true,
         message: 'Excellent progress!',
-        post: updatedPost
+        post: updatedIdea
     })
 
     } catch (error) {
@@ -93,17 +99,17 @@ router.post('/:id', verifyToken, async(req, res) => {
 // @access Private
 router.delete('/:id', verifyToken, async (req, res) => {
 	try {
-		const postDeleteCondition = { _id: req.params.id, user: req.UserId }
-		const deletedPost = await Post.findOneAndDelete(postDeleteCondition)
+		const ideaDeleteCondition = { _id: req.params.id }
+		const deletedIdea = await Idea.findOneAndDelete(ideaDeleteCondition)
 
 		// User not authorised or post not found
-		if (!deletedPost)
+		if (!deletedIdea)
 			return res.status(401).json({
 				success: false,
 				message: 'Post not found or user not authorised'
 			})
 
-		res.json({ success: true, post: deletedPost })
+		res.json({ success: true, post: deletedIdea })
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ success: false, message: 'Internal server error' })
@@ -115,7 +121,99 @@ router.delete('/:id', verifyToken, async (req, res) => {
 // @access Private
 router.get('/home', verifyToken, async (req, res) => {
 	try {
-        const ideas = await Idea.find().sort({creatAt: -1}).populate('UserId','Name')
+        // query to join cmt, user, idea
+        const ideas = await Idea.aggregate([
+            {
+                $match:{}
+            },
+            {
+              $lookup: {
+                from: "commentideas",
+                localField: "_id",
+                foreignField: "IdeaId",
+                as: "comments"
+              }
+            },
+
+            {
+              $lookup: {
+                from: "users",
+                localField: "UserId",
+                foreignField: "_id",
+                as: "users"
+              }
+            },
+            {
+              $lookup: {
+                from: "categories",
+                localField: "CategoryId",
+                foreignField: "_id",
+                as: "category"
+              }
+            },
+            {
+              $project: {
+                _id: 1,
+                Title: 1,
+                Description: 1,
+                LastEdition: 1,
+                userPost: {
+                    $map:{
+                        input: "$users",
+                        as: "user",
+                        in: {
+                          _id: "$$user._id",
+                          Name: "$$user.Name",
+                          Avatar: "$$user.Avatar",
+                        }
+                    } 
+                },
+                category: {
+                    $map: {
+                        input: "$category",
+                        as: "category",
+                        in:{
+                          _id:"$$category._id",
+                          Name:"$$category.Title"
+                        }
+                    }
+                },
+                comments: {
+                    $map: {
+                    input: "$comments",
+                    as: "comment",
+                    in: {
+                        _id: "$$comment._id",
+                        Content: "$$comment.Content",
+                        LastEdition: "$$comment.LastEdition",
+                        usercomment: {
+                            $arrayElemAt: [
+                                {
+                                  $map: {
+                                    input: {
+                                      $filter: {
+                                        input: "$users",
+                                        as: "u",
+                                        cond: { $eq: ["$$u._id", "$$comment.UserId"] }
+                                      }
+                                    },
+                                    as: "u",
+                                    in: {
+                                      _id: "$$u._id",
+                                      Name: "$$u.Name",
+                                      Avatar: "$$u.Avatar"
+                                    }
+                                  }
+                                },
+                                0
+                              ]
+                        },
+                    }
+                }
+            }
+        }
+    }])
+
 		res.json({ success: true, ideas})
 	} catch (error) {
 		console.log(error)
