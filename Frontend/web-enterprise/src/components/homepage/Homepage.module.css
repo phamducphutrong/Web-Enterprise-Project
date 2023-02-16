@@ -1,5 +1,7 @@
 * {
-    box-sizing: unset;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
@@ -7,6 +9,14 @@
     flex-direction: row;
     resize: both;
     overflow: auto;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
 .line {
@@ -28,7 +38,6 @@
 .middle-section {
     width: 50%;
     padding-left: 10%;
-    padding-right: 10%;
     margin-left: 20%;
     margin-right: 20%;
     text-align: justify;

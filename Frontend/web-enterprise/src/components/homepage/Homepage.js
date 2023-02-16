@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from '../header/Header'
-import "./Homepage.css";
+import style from "./Homepage.module.css";
 
 function Homepage() {
 
@@ -26,37 +26,37 @@ function Homepage() {
     return (
         <div>
             <Header />
-            <div className="container">
-                <div className="left-sidebar">
+            <div className={style.container}>
+                <div className={style['left-sidebar']}>
                     <ul>
                         <li>Home</li>
                         <li>Category 2</li>
                         <li>Category 3</li>
                     </ul>
                 </div>
-                <div className="middle-section">
+                <div className={style['middle-section']}>
                     <h2>Posts</h2>
                     <ul>
-                        <li className="arial-label">
-                            <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Aa58ZvsOtyQAX-xk8VM&tn=XxsEV1fe8eY9p6hm&_nc_ht=scontent.fhan15-1.fna&oh=00_AfDn_60rxz8p9jtoQpQwPwCq2XiC5kVvUBauvK4Lxcn4Yw&oe=63ED11D5" alt="avatar" class="avatar" />
-                            <input type="text" name="comment" className="input-text" placeholder="Input nội dung"/>
+                        <li className={style['arial-label']}>
+                            <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Aa58ZvsOtyQAX-xk8VM&tn=XxsEV1fe8eY9p6hm&_nc_ht=scontent.fhan15-1.fna&oh=00_AfDn_60rxz8p9jtoQpQwPwCq2XiC5kVvUBauvK4Lxcn4Yw&oe=63ED11D5" alt="avatar" class={style.avatar} />
+                            <input type="text" name="comment" className={style['input-text']} placeholder="Input nội dung"/>
                         </li>
                         <li>
                             
                         </li>
-                        <div className="line">
+                        <div className={style.line}>
                         </div>
                     </ul>
                     <ul>
-                        <li className="text-input">
+                        <li className={style['text-input']}>
                             In the above code, the import keywords are used to import the Apple() and Windows() functions, exported by the "America.js" file.
                             Also, we need to wrap the functions or values inside the curly braces { } and must have to put the same name as defined from where they
                             are being exported. That’s why these imports are called Named export. We can not change the name of the imported bindings aka (Functions/Values/Classes).
                             But also we can import multiple bindings into a single line of code, separated by commas(, )
-                            <div className="like-dislike">
-                                <div className="interaction-buttons">
-                                    <button onClick={handleLikeClick} className="like"><i class="fa fa-thumbs-up"></i></button>
-                                    <button onClick={handleDislikeClick} className="dislike"><i class="fa fa-thumbs-down"></i></button>
+                            <div className={style['like-dislike']}>
+                                <div className={style['interaction-buttons']}>
+                                    <button onClick={handleLikeClick} className={style.like}><i class="fa fa-thumbs-up"></i></button>
+                                    <button onClick={handleDislikeClick} className={style.dislike}><i class="fa fa-thumbs-down"></i></button>
                                 </div>
                                 <div className="comment-section">
                                     <form onSubmit={handleCommentSubmit}>
@@ -72,7 +72,7 @@ function Homepage() {
                         </li>
                     </ul>
                 </div>
-                <div className="right-sidebar">
+                <div className={style['right-sidebar']}>
                     <ul>
                         <li>Category 4</li>
                         <li>Category 5</li>
