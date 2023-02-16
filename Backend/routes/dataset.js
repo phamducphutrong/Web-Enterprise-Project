@@ -59,7 +59,7 @@ router.post('/createCategory',async(req,res)=>{
 
 router.post('/createIdea',async(req,res)=>{
     const idea = [
-        { "Title": "Marketing in 2023 of UoG", "Description": "About marketingggggggggg", "DateEdition":"2023-02-12","CategoryId":"63e91195e2f49701e0175481", "UserId":"63e90e898afc6bc67b547656" }
+        { "Title": "Marketing in 2023 of UoG", "Description": "About marketingggggggggg", "DateEdition":"2023-02-12","CategoryId":"63e91195e2f49701e0175481", "UserId":"63e7aa8f4077f28f87bdb51e" }
     ];
     Idea.create(idea, function(error, documents) {
         if (error) {

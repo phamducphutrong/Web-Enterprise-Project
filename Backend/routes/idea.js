@@ -1,10 +1,12 @@
 const express = require('express')
+const mongoose = require("mongoose")
 const Schema = express.Router()
 const verifyToken = require('../middleware/auth')
 const Idea = require('../models/Idea')
 const User = require('../models/User')
 const CommentIdea = require('../models/CommentIdea')
 const router = require('./auth')
+const ObjectId = mongoose.Types.ObjectId
 
 const now = new Date()
 const options = { timeZone: 'Asia/Ho_Chi_Minh'}
@@ -42,7 +44,102 @@ router.post('/', verifyToken, async(req, res) => {
 // @access Private
 router.get('/', async (req, res) => {
 	try {
-		const ideas = await Idea.find({ user: req.UserId }).populate('UserId', 'Name')
+		const ideas = await Idea.aggregate([
+            {
+                $match:{
+                    'UserId' : ObjectId('63e90e898afc6bc67b547656'),
+                }
+            },
+            {
+              $lookup: {
+                from: "commentideas",
+                localField: "_id",
+                foreignField: "IdeaId",
+                as: "comments"
+              }
+            },
+
+            {
+              $lookup: {
+                from: "users",
+                localField: "UserId",
+                foreignField: "_id",
+                as: "users"
+              }
+            },
+            {
+              $lookup: {
+                from: "categories",
+                localField: "CategoryId",
+                foreignField: "_id",
+                as: "category"
+              }
+            },
+            {
+              $project: {
+                _id: 1,
+                Title: 1,
+                Description: 1,
+                LastEdition: 1,
+                userPost: {
+                    $map:{
+                        input: "$users",
+                        as: "user",
+                        in: {
+                          _id: "$$user._id",
+                          Name: "$$user.Name",
+                          Avatar: "$$user.Avatar",
+                        }
+                    } 
+                },
+                category: {
+                    $map: {
+                        input: "$category",
+                        as: "category",
+                        in:{
+                          _id:"$$category._id",
+                          Name:"$$category.Title"
+                        }
+                    }
+                },
+                comments: {
+                    $map: {
+                    input: "$comments",
+                    as: "comment",
+                    in: {
+                        _id: "$$comment._id",
+                        Content: "$$comment.Content",
+                        LastEdition: "$$comment.LastEdition",
+                        usercomment: {
+                            $arrayElemAt: [
+                                {
+                                  $map: {
+                                    input: {
+                                      $filter: {
+                                        input: "$users",
+                                        as: "u",
+                                        cond: { $eq: ["$$u._id", "$$comment.UserId"] }
+                                      }
+                                    },
+                                    as: "u",
+                                    in: {
+                                      _id: "$$u._id",
+                                      Name: "$$u.Name",
+                                      Avatar: "$$u.Avatar"
+                                    }
+                                  }
+                                },
+                                0
+                              ]
+                        },
+                    }
+                }
+            }
+        }
+    },
+    {
+        $sort: { LastEdition: -1 }
+    }]);
 		res.json({ success: true, ideas })
 	} catch (error) {
 		console.log(error)
@@ -212,6 +309,9 @@ router.get('/home', verifyToken, async (req, res) => {
                 }
             }
         }
+    },
+    {
+        $sort: { LastEdition: -1 }
     }])
 
 		res.json({ success: true, ideas})
