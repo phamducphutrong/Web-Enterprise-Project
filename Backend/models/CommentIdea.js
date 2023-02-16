@@ -5,6 +5,9 @@ const commentSchema = new Schema({
     Content: {
         type: String
     },
+    LastEdition:{
+        type:Date
+    },
     UserId: {
         type: Schema.Types.ObjectId,
         ref: 'User'

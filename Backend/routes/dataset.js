@@ -72,7 +72,7 @@ router.post('/createIdea',async(req,res)=>{
 
 router.post('/createComment',async(req,res)=>{
     const comment = [
-        { "Content": "Bai viet hay vl", "UserId": "63e90e898afc6bc67b547656","IdeaId":"63e912385203710add850c31" }
+        { "Content": "Bai viet hay vl", "UserId": "63e90e898afc6bc67b547656","IdeaId":"63e912385203710add850c31","LastEdition":"2023-01-01" }
     ];
     CommentIdea.create(comment, function(error, documents) {
         if (error) {

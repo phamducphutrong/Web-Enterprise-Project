@@ -28,29 +28,6 @@ router.post('/create', async(req,res)=> {
     }
 })
 
-// // insert data
-// router.post('/createAll',async(req,res)=>{
-//     const hashPassword = await argon2.hash("123456")
-//     const account = [
-//         { "Username": "phuongAnh1",
-//         "Password": hashPassword,
-//         "Role": "Staff" },
-//         { "Username": "PhuTrongNon1",
-//         "Password": hashPassword,
-//         "Role": "Staff" },
-//         { "Username": "DUcHung1",
-//         "Password": hashPassword,
-//         "Role": "QAM" }
-//     ];
-
-//     Account.create(account, function(error, documents) {
-//         if (error) {
-//             console.error(error);
-//         } else {
-//             console.log("Data inserted successfully");
-//         }
-//     });
-// })
 //  @route POST api/auth/login
 //  @desc Login
 //  @access Public
