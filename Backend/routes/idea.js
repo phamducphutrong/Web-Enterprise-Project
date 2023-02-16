@@ -1,10 +1,8 @@
 const express = require('express')
 const mongoose = require("mongoose")
-const Schema = express.Router()
 const verifyToken = require('../middleware/auth')
 const Idea = require('../models/Idea')
-const User = require('../models/User')
-const CommentIdea = require('../models/CommentIdea')
+const Category = require('../models/Category')
 const router = require('./auth')
 const ObjectId = mongoose.Types.ObjectId
 
@@ -32,7 +30,7 @@ router.post('/', verifyToken, async(req, res) => {
 
         await newIdea.save()
 
-        res.json({success: true, message: 'Successfully', post: newIdea})
+        res.json({success: true, message: 'Successfully', idea: newIdea})
     } catch (error) {
         console.log(error)
         res.status(500).json({success: false, message:'Internla server error'})
@@ -312,9 +310,10 @@ router.get('/home', verifyToken, async (req, res) => {
     },
     {
         $sort: { LastEdition: -1 }
-    }])
-
-		res.json({ success: true, ideas})
+    }]);
+        //query to show all category
+        const category = await Category.find()
+		res.json({ success: true, ideas,category})
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ success: false, message: 'Internal server error' })
