@@ -32,7 +32,7 @@ const Header = () => {
 
 				<div class={style.dropdown}>
 					<div class={style['dropdown-toggle']}>
-						<img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Aa58ZvsOtyQAX-xk8VM&tn=XxsEV1fe8eY9p6hm&_nc_ht=scontent.fhan15-1.fna&oh=00_AfDn_60rxz8p9jtoQpQwPwCq2XiC5kVvUBauvK4Lxcn4Yw&oe=63ED11D5" alt="avatar" class={style.avatar} />
+						{/* <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Aa58ZvsOtyQAX-xk8VM&tn=XxsEV1fe8eY9p6hm&_nc_ht=scontent.fhan15-1.fna&oh=00_AfDn_60rxz8p9jtoQpQwPwCq2XiC5kVvUBauvK4Lxcn4Yw&oe=63ED11D5" alt="avatar" class={style.avatar} /> */}
 						<i class="fa fa-caret-down">
 							<div class={style['dropdown-menu']}>
 								<a href="#">Profile</a>

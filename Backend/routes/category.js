@@ -7,7 +7,7 @@ const router = require('./auth');
 // @route GET api/category
 // @desc Get all category
 // @access Private
-router.get('/showall',verifyToken, async (req, res) => {
+router.get('/showAll', verifyToken, async (req, res) => {
 	try {
 		const categories = await Category.find()
 

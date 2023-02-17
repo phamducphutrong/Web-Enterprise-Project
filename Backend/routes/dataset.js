@@ -46,7 +46,7 @@ router.post('/createUserProfile',async(req,res)=>{
 
 router.post('/createCategory',async(req,res)=>{
     const category = [
-        { "Title": "Marketing in 2023", "Description": "About marketing", "DateInnitiated":"2023-01-01", "DoB": "2002-12-10", "Status":"Openning" }
+        { "Title": "F88", "Description": "Tín dụng đen", "DateInnitiated":"2023-02-03", "Status":"Openning" }
     ];
     Category.create(category, function(error, documents) {
         if (error) {
