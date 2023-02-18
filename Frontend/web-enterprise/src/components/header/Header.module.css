@@ -1,10 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     height: 55px;
-    background-color: pink;
+    background-color: #FAE6E6;
     color: #fff;
 }
 
@@ -21,7 +27,7 @@
     height: 100%;
 }
 
-.search-container {
+.searchContainer {
     width: 500px;
     height: 40px;
     background-color: #fff;
@@ -32,13 +38,12 @@
     padding-right: 20px;
 }
 
-.search-container input[type="text"] {
+.searchContainer input[type="text"] {
     width: 100%;
     border: none;
     outline: none;
     font-size: 14px;
 }
-
 
 .profile {
     display: flex;
@@ -54,7 +59,7 @@
     display: inline-block;
 }
 
-.dropdown-toggle {
+.dropdownToggle {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -68,16 +73,12 @@
     margin-right: 10px;
 }
 
-.username {
-    font-size: 16px;
-}
-
 .fa-caret-down {
     font-size: 16px;
     margin-left: 10px;
 }
 
-.dropdown-menu {
+.dropdownMenu {
     position: absolute;
     top: 100%;
     right: 0;
@@ -88,7 +89,7 @@
     padding: 10px;
 }
 
-.dropdown-menu a {
+.dropdownMenu a {
     display: block;
     color: #333;
     padding: 10px;
@@ -108,5 +109,5 @@ header.fixed {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 2000;
 }
