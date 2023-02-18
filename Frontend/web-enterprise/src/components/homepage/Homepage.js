@@ -53,7 +53,7 @@ function Homepage() {
                     </ul>
                 </div>
                 <div className={style.middleSection}>
-                    <h2 className={style.post}>Posts</h2>
+                    <h2 className={t}>Posts</h2>
                     <ul>
                         <li className={style.arialLabel}>
                             <img src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=BEaMNFz7QxcAX8AUCBi&_nc_ht=scontent.fhan1-1.fna&oh=00_AfAui5DKlW7l4nLJw6oE3WLHxZoYJnDlmi_rHtzlnaZGDw&oe=63F30095" alt="avatar" className={style.logo} />
