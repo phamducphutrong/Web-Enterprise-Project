@@ -89,7 +89,7 @@ function Homepage() {
                                     <button onSubmit={handleCommentSubmit} className={style.comment}><i class="fa fa-comment"></i></button>
                                 </div>
                                 <div className={style.commentSection}>
-                                    <form onSubmit={handleCommentSubmit}>
+                                    <form className={style.homepageForm} onSubmit={handleCommentSubmit}>
                                         <textarea className={style.inputComment} type="text" name="comment" placeholder="Comment here" />
                                     </form>
                                     <ul>

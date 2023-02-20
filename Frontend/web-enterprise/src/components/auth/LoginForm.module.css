@@ -1,0 +1,224 @@
+.loginWrapper {
+  font-family: "Roboto", sans-serif;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  background: #f7eaee;
+}
+
+.panda {
+  position: relative;
+  width: 12.5rem;
+  margin: 3.125rem auto;
+}
+
+.ear {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background: #000;
+  border: 0.625rem solid #fff;
+  left: -0.9375rem;
+  top: -0.9375rem;
+  border-radius: 100%;
+}
+
+.earRgt {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background: #000;
+  border: 0.625rem solid #fff;
+  left: 7.8125rem;
+  top: -0.9375rem;
+  border-radius: 100%;
+}
+.face {
+  height: 12.5rem;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 0.625rem 0.9375rem rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.eyeShadeLeft {
+  background: #000;
+  width: 3.125rem;
+  height: 80px;
+  margin: 10px;
+  position: absolute;
+  top: 35px;
+  left: 25px;
+  rotate: 220deg;
+  border-radius: 25px / 20px 30px 35px 40px;
+}
+
+.eyeShadeRight {
+  background: #000;
+  width: 3.125rem;
+  height: 80px;
+  margin: 10px;
+  position: absolute;
+  top: 35px;
+  left: 105px;
+  rotate: -220deg;
+  border-radius: 25px / 20px 30px 35px 40px;
+}
+
+.eyeWhiteLeft {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: #fff;
+  z-index: 500;
+  left: 40px;
+  top: 80px;
+}
+.eyeWhiteRight {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: #fff;
+  z-index: 500;
+  left: 130px;
+  top: 80px;
+}
+.nose {
+  position: absolute;
+  height: 20px;
+  width: 35px;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50px 20px/ 30px 15px;
+  rotate: 15deg;
+  background: #000;
+}
+
+.body {
+  background: #fff;
+  position: absolute;
+  top: 200px;
+  left: -20px;
+  border-radius: 100px 100px 100px 100px / 126px 126px 96px 96px;
+  width: 250px;
+  height: 282px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.handLeft {
+  width: 40px;
+  height: 35px;
+  border-radius: 50px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  background: #000;
+  margin: 5px;
+  position: absolute;
+  top: 148px;
+  left: -25px;
+}
+.handRight {
+  width: 40px;
+  height: 35px;
+  border-radius: 50px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  background: #000;
+  margin: 5px;
+  position: absolute;
+  top: 148px;
+  left: 375px;
+}
+
+.footLeft {
+  top: 445px;
+  background: #000;
+  z-index: 1400;
+  width: 63px;
+  height: 82px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: -64px;
+  margin: auto;
+}
+.footRight {
+  top: 423px;
+  background: #000;
+  z-index: 1400;
+  width: 63px;
+  height: 82px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 21px;
+  left: 200px;
+  margin: auto;
+}
+
+.finger {
+  position: absolute;
+  width: 43px;
+  height: 52px;
+  background: #222;
+  border-radius: 100%;
+  top: 21px;
+  right: 9px;
+}
+
+.loginForm {
+  max-width: 400px;
+  padding: 31px 40px;
+  background: #fff;
+  margin: auto;
+  box-shadow: 0 10px 15px rgb(0 0 0 / 15%);
+  position: relative;
+  transform: translateY(-100px);
+  z-index: 500;
+  border: 1px solid #eee;
+}
+
+.loginText {
+  color: #ff4081;
+  font-family: "Dancing Script", cursive;
+  text-align: center;
+}
+
+.loginBtnWrapper {
+  text-align: center;
+}
+
+.loginBtn {
+  background: #fff;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border: 1px solid #ff4081;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 50px #ff4081 inset;
+  color: #fff;
+}
+
+.formGroup {
+  position: relative;
+  font-size: 15px;
+  color: #666;
+  margin: 10px;
+}
+
+.formControl {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  height: 35px;
+  background: none;
+  border: none;
+  padding: 5px 0;
+  transition: 0.3s;
+  border-bottom: 1px solid #777;
+  color: #555;
+}

@@ -1,13 +1,9 @@
-const express = require('express')
-const Schema = express.Router()
 const verifyToken = require('../middleware/auth');
 const Category = require('../models/Category');
 const router = require('./auth');
 
-// @route GET api/category
-// @desc Get all category
-// @access Private
-router.get('/showAll', verifyToken, async (req, res) => {
+//api to get all
+router.get('/showAll', async (req, res) => {
 	try {
 		const categories = await Category.find()
 
@@ -18,60 +14,56 @@ router.get('/showAll', verifyToken, async (req, res) => {
 	}
 })
 
-// @route POST api/category/createnew
-// @desc Create new category
-// @access Private
-router.post('/newCategory', verifyToken, async(req,res)=>{
-	const { Title, Description, Status } = req.body
-	if (!Title || !Status) return res.status(400).json({success:false,message:"Please enter full information",Status})
-	const validTitle = await Category.findOne({Title})
-	if(validTitle) return res.status(400).json({success:false,message:"Title is exitsted"})
-	try{
-		const Innitiated = '2023-01-01'
+//api to create
+router.post('/newCategory', async (req, res) => {
+	const { Title, Description, DateInnitiated, Status } = req.body
+	if (!Title || !Status || !DateInnitiated || !Description) return res.status(400).json({ success: false, message: "Please enter full information", Title, Description, DateInnitiated, Status })
+	const inValidTitle = await Category.findOne({ Title })
+	if (inValidTitle) return res.status(400).json({ success: false, message: "Title is exitsted" })
+	try {
 		const newCategory = new Category({
-            Title, 
-            Description, 
-            Innitiated,
-            Status
+			Title,
+			Description,
+			DateInnitiated,
+			Status
 		})
 		await newCategory.save()
-        return res.json({success: true, message: 'Successfully', category: newCategory,validTitle})
+		return res.json({ success: true, message: 'Successfully', category: newCategory })
 	}
-	catch(error)
-	{
+	catch (error) {
 		console.log(error.message)
 		res.status(500).json({ success: false, message: 'Internal server error' })
 	}
 })
 
-router.get('/update/:id', verifyToken, async(req,res)=>{
-	try{
-		const id = req.params.id
-		const validId = await Category.findOne({id})
-		if(!validId) return res.status(400).json({success:false,message:"Not found this category"})
-		else return res.json({success:true,validId})
-	}
-	catch(error)
-	{
-		console.log(error.message)
-		res.status(500).json({ success: false, message: 'Internal server error' })
-	}
-})
+// router.get('/update/:id', async (req, res) => {
+// 	try {
+// 		const id = req.params.id
+// 		const validId = await Category.findOne({ id })
+// 		if (!validId) return res.status(400).json({ success: false, message: "Not found this category" })
+// 		else return res.json({ success: true, validId })
+// 	}
+// 	catch (error) {
+// 		console.log(error.message)
+// 		res.status(500).json({ success: false, message: 'Internal server error' })
+// 	}
+// })
 
-router.put('/update/:id', verifyToken, async(req,res)=>{
+//api to update
+router.put('/update/:id', async (req, res) => {
 	const { Title, Description, Status } = req.body
-	if(!Title || !Status) return res.json({success:false,message:"Please enter full information"})
+	if (!Title || !Status) return res.json({ success: false, message: "Please enter full information" })
 	const id = req.params.id
-	const validId = await Category.findOne({id})
-	if(!validId) return res.status(400).json({success:false,message:"Not found this category"})
-	try{
+	const validId = await Category.findOne({ id })
+	if (!validId) return res.status(400).json({ success: false, message: "Not found this category" })
+	try {
 		let updatedCategory = {
-            Title,
-            Description,
+			Title,
+			Description,
 			Status
-        }
+		}
 
-        const categoryUpdateCondition = { _id: req.params.id }
+		const categoryUpdateCondition = { _id: req.params.id }
 
 		updatedCategory = await Category.findOneAndUpdate(
 			categoryUpdateCondition,
@@ -79,29 +71,30 @@ router.put('/update/:id', verifyToken, async(req,res)=>{
 			{ new: true }
 		)
 
-        // User not authorised to update post or post not found
+		// User not authorised to update post or post not found
 		if (!updatedCategory)
-        return res.status(401).json({
-            success: false,
-            message: 'Category not found or user not authorised'
-        })
+			return res.status(401).json({
+				success: false,
+				message: 'Category not found or user not authorised'
+			})
 
-    res.json({
-        success: true,
-        message: 'Excellent progress!',
-        category: updatedCategory
-	})
+		res.json({
+			success: true,
+			message: 'Excellent progress!',
+			category: updatedCategory
+		})
 	}
-	catch(error){
+	catch (error) {
 		console.log(error.message)
 		res.status(500).json({ success: false, message: 'Internal server error' })
 	}
 })
 
-router.delete('/delete/:id', verifyToken, async (req, res) => {
+//api to delete
+router.delete('/delete/:id', async (req, res) => {
 	try {
 		const categoryDeleteCondition = { _id: req.params.id }
-		const deletedCategory = await Idea.findOneAndDelete(categoryDeleteCondition)
+		const deletedCategory = await Category.findOneAndDelete(categoryDeleteCondition)
 
 		// User not authorised or post not found
 		if (!deletedCategory)
@@ -116,4 +109,5 @@ router.delete('/delete/:id', verifyToken, async (req, res) => {
 		res.status(500).json({ success: false, message: 'Internal server error' })
 	}
 })
+
 module.exports = router

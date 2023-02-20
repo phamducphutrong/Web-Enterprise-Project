@@ -11,7 +11,7 @@ const Header = () => {
 	}, []);
 
 	const handleScroll = () => {
-		if (window.pageYOffset >= 0) {
+		if (window.pageYOffset >= 55) {
 			setFixed(true);
 		} else {
 			setFixed(false);
@@ -26,11 +26,11 @@ const Header = () => {
 				<div className={style.searchContainer}>
 					<input type="text" placeholder="Search" />
 				</div>
-				<div class={style.dropdown}>
-					<div class={style.dropdownToggle}>
-						<img src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=BEaMNFz7QxcAX8AUCBi&_nc_ht=scontent.fhan1-1.fna&oh=00_AfAui5DKlW7l4nLJw6oE3WLHxZoYJnDlmi_rHtzlnaZGDw&oe=63F30095" alt="avatar" class={style.avatar}/>
-						<i class="fa fa-caret-down">
-							<div class={style.dropdownMenu}>
+				<div className={style.dropdown}>
+					<div className={style.dropdownToggle}>
+						<img src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=BEaMNFz7QxcAX8AUCBi&_nc_ht=scontent.fhan1-1.fna&oh=00_AfAui5DKlW7l4nLJw6oE3WLHxZoYJnDlmi_rHtzlnaZGDw&oe=63F30095" alt="avatar" className={style.avatar}/>
+						<i className="fa fa-caret-down">
+							<div className={style.dropdownMenu}>
 								<a href="#">Profile</a>
 								<a href="#">Settings</a>
 								<a href="#">Logout</a>

@@ -1,4 +1,3 @@
-const express = require('express')
 const mongoose = require("mongoose")
 const verifyToken = require('../middleware/auth')
 const Idea = require('../models/Idea')
@@ -10,6 +9,7 @@ const now = new Date()
 const options = { timeZone: 'Asia/Ho_Chi_Minh'}
 const localTime = now.toLocaleString('en-US', options)
 console.log(now)
+
 // @route POST api/ideas
 // @desc Create idea
 // @access Private
