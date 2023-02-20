@@ -101,7 +101,7 @@ router.put('/update/:id', verifyToken, async(req,res)=>{
 router.delete('/delete/:id', verifyToken, async (req, res) => {
 	try {
 		const categoryDeleteCondition = { _id: req.params.id }
-		const deletedCategory = await Idea.findOneAndDelete(categoryDeleteCondition)
+		const deletedCategory = await Category.findOneAndDelete(categoryDeleteCondition)
 
 		// User not authorised or post not found
 		if (!deletedCategory)
