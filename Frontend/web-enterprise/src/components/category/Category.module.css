@@ -1,46 +1,50 @@
+.categoryWrapper {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
 .body {
-    height: 500px;
-    width: 90%;
-    margin: 20px auto;
+    height: calc(100% - 55px);
 }
 
 .otherFunctionsWrapper {
     float: left;
-    border: 1px solid black;
-    border-radius: 20px;
-    height: 500px;
     width: 20%;
-    box-sizing: border-box;
+    height: 100%;
+    background-color: #f2f2f2;
+    border-right: 1px solid black;
 }
 
 .infomationWrapper {
     float: left;
     width: 60%;
-    height: 500px;
-    box-sizing: border-box;
+    height: 100%;
 }
 
 .otherCategoriesWrapper {
     float: right;
-    border: 1px solid black;
-    border-radius: 20px;
-    height: 500px;
     width: 20%;
-    box-sizing: border-box;
+    height: 100%;
+    background-color: #f2f2f2;
+    border-left: 1px solid black;
 }
 
 .otherFunctionsWrapper .otherFunctions {
-    height: 500px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .information {
-    height: 500px;
-    border: 1px solid black;
-    border-radius: 20px;
-    margin: 0 5%;
+    height: 100%;
+    margin: 0 10%;
+    background-color: #f2f2f2;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .categoryName {
@@ -51,14 +55,12 @@
 
 .information table {
     width: 90%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
-.information th,td {
+.information th,
+td {
     border: 1px solid black;
-
 }
 
 .information th {
@@ -93,28 +95,28 @@
     margin: 20px auto 0 auto;
 }
 
-.actionsWrapper .add {
+.actionsWrapper .edit {
     float: left;
     width: 50%;
-    height: 70px;
-    background-color: white;
+    height: 50px;
     border: 1px solid black;
     border-radius: 20px 0 0 20px;
-    box-sizing: border-box;
 }
 
 .actionsWrapper .delete {
     float: right;
     width: 50%;
-    height: 70px;
-    background-color: white;
+    height: 50px;
     border: 1px solid black;
     border-radius: 0 20px 20px 0;
-    box-sizing: border-box;
 }
 
-.actionsWrapper img{
-    width: 20px;
+.actionsWrapper .add {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 .otherCategoriesWrapper .label {
@@ -123,17 +125,54 @@
     padding: 10px 0;
 }
 
-.otherCategoriesWrapper ul{
-    list-style: none;
+.otherCategoriesWrapper ul {
     margin: 0;
+    list-style: none;
 }
 
 .otherCategoriesWrapper li {
     margin: 0;
-    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc((500px - 56px) / 4);
+    height: 50px;
     border-top: 1px solid black;
+}
+
+.otherCategoriesWrapper li:last-child {
+    border-bottom: 1px solid black;
+}
+
+.categoryModal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.categoryModalContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.categoryClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.categoryClose:hover,
+.categoryClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

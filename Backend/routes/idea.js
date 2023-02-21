@@ -1,4 +1,3 @@
-const express = require('express')
 const mongoose = require("mongoose")
 const multer  = require('multer');
 const path = require('path');
@@ -15,6 +14,7 @@ const now = new Date()
 const currentYear = now.getFullYear();
 const options = { timeZone: 'Asia/Ho_Chi_Minh'}
 const localTime = now.toLocaleString('en-US', options)
+
 
 const uploadPath = path.join(__dirname, '../Public/uploads/');
 
@@ -48,6 +48,7 @@ const uploadPath = path.join(__dirname, '../Public/uploads/');
       }
     }
   });
+
 
 // @route POST api/ideas
 // @desc Create idea

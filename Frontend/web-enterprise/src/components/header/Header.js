@@ -13,7 +13,7 @@ const Header = () => {
 	}, []);
 
 	const handleScroll = () => {
-		if (window.pageYOffset >= 0) {
+		if (window.pageYOffset >= 55) {
 			setFixed(true);
 		} else {
 			setFixed(false);
