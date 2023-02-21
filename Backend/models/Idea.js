@@ -18,6 +18,11 @@ const IdeaSchema = new Schema({
     CategoryId: {
         type: Schema.Types.ObjectId,
         ref: 'Category'
+    },
+    AcademicYear: {
+        type: String,
+        ref: 'Academic',
+        select: 'Year'
     }
 })
 

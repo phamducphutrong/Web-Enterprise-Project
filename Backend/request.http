@@ -19,6 +19,8 @@ Content-Type: application/json
 POST http://localhost:5000/api/dataset/createAccount
 
 ###
+POST http://localhost:5000/api/dataset/createAcademicYear
+###
 POST http://localhost:5000/api/dataset/createUserProfile
 
 ###
@@ -35,11 +37,11 @@ GET http://localhost:5000/api/idea/home
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzMTE5MTB9.sY-2YROtz5vTcaC-VlGwtfdmJFVc7vW_r40_Apvxa1I 
 
 ### 
-GET http://localhost:5000/api/idea
+GET http://localhost:5000/api/idea/profile/63e90e898afc6bc67b547656
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzMTE5MTB9.sY-2YROtz5vTcaC-VlGwtfdmJFVc7vW_r40_Apvxa1I
 
 ###
-PUT http://localhost:5000/api/idea/63e912385203710add850c31
+PUT http://localhost:5000/api/idea/63f466c857ae5bdd5d301350
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzOTEzNjl9.hog6yocs63pSdt0C3wtK26gcfy06Ch0fU8KVlNd4h_U
 Content-Type: application/json
 
@@ -86,3 +88,23 @@ Content-Type: application/json
 DELETE http://localhost:5000/QAM/category/update/63ec4d2da09eefc5ecab047d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzMTE5MTB9.sY-2YROtz5vTcaC-VlGwtfdmJFVc7vW_r40_Apvxa1I
 //k duoc click
+# ###
+# POST http://localhost:5000/api/file/upload
+# Content-Type: multipart/form-data; boundary=--------------------------785807947796125939618251
+
+# Content-Disposition: form-data; name="IdeaId"
+# Content-Type: text/plain
+
+# "63e912385203710add850c31"
+
+# --------------------------785807947796125939618251
+# Content-Disposition: form-data; name="images"; filename="C:\Users\admin\Downloads\btn_after.jpg"
+# Content-Type: image/jpeg
+
+# ""
+
+# --------------------------785807947796125939618251--
+
+###
+GET http://localhost:5000/api/file/download
+

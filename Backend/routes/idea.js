@@ -1,19 +1,59 @@
 const express = require('express')
 const mongoose = require("mongoose")
+const multer  = require('multer');
+const path = require('path');
+const fs = require('fs');
+
 const verifyToken = require('../middleware/auth')
 const Idea = require('../models/Idea')
 const Category = require('../models/Category')
+const File = require('../models/File')
 const router = require('./auth')
 const ObjectId = mongoose.Types.ObjectId
 
 const now = new Date()
+const currentYear = now.getFullYear();
 const options = { timeZone: 'Asia/Ho_Chi_Minh'}
 const localTime = now.toLocaleString('en-US', options)
-console.log(now)
+
+const uploadPath = path.join(__dirname, '../Public/uploads/');
+
+  // Tạo folder uploads nếu chưa có
+  if (!fs.existsSync(uploadPath)) {
+    fs.mkdirSync(uploadPath);
+  }
+
+  // Thiết lập multer storage để lưu trữ file
+  const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, uploadPath)
+    },
+    filename: function (req, file, cb) {
+      cb(null, `${file.originalname}`);
+    }
+  });
+
+  // Thiết lập multer upload để tải lên file
+  const upload = multer({
+    storage: storage,
+    fileFilter: function(req, file, cb) {
+      // Chỉ cho phép tải lên file với định dạng hợp lệ
+      const filetypes = /doc|docs|pdf|csv|rar|xlsx|xls|ppt/;
+      const mimetype = filetypes.test(file.mimetype);
+      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+      if (mimetype && extname) {
+        return cb(null, true);
+      } else {
+        cb('Error: Invalid format of file');
+      }
+    }
+  });
+
 // @route POST api/ideas
 // @desc Create idea
 // @access Private
-router.post('/', verifyToken, async(req, res) => {
+router.post('/',upload.array('documents', 10), verifyToken, async(req, res) => {
+  const files = req.files;
     const{ Title, Description, UserId, CategoryId } = req.body
 
     if(!Title)
@@ -28,8 +68,17 @@ router.post('/', verifyToken, async(req, res) => {
             CategoryId: CategoryId
         })
 
-        await newIdea.save()
-
+        const IdeaId = await newIdea.save()
+        
+        if(files){
+          const newFiles = files.map(file => new File({
+            IdeaId:IdeaId,
+            DateUpload: now,
+            Link: `Public/uploads/${file.filename}`
+        }));
+      
+        await File.insertMany(newFiles);
+        }
         res.json({success: true, message: 'Successfully', idea: newIdea})
     } catch (error) {
         console.log(error)
@@ -40,12 +89,12 @@ router.post('/', verifyToken, async(req, res) => {
 // @route GET api/idea
 // @desc Get owner ideas
 // @access Private
-router.get('/', async (req, res) => {
+router.get('/profile/:id', async (req, res) => {
 	try {
 		const ideas = await Idea.aggregate([
             {
                 $match:{
-                    'UserId' : ObjectId('63e90e898afc6bc67b547656'),
+                    'UserId' : ObjectId(req.params.id),
                 }
             },
             {
@@ -56,7 +105,14 @@ router.get('/', async (req, res) => {
                 as: "comments"
               }
             },
-
+            {
+              $lookup:{
+                from: "files",
+                localField: "_id",
+                foreignField: "IdeaId",
+                as: "files"
+              }
+            },
             {
               $lookup: {
                 from: "users",
@@ -100,6 +156,16 @@ router.get('/', async (req, res) => {
                         }
                     }
                 },
+                files:{
+                  $map: {
+                    input: "$files",
+                    as: "file",
+                    in:{
+                      Url: "$$file.Link"
+                    }
+                  }
+                }
+                ,
                 comments: {
                     $map: {
                     input: "$comments",
@@ -159,7 +225,8 @@ router.put('/:id',verifyToken, async(req, res) => {
         let updatedIdea = {
             Title,
             Description,
-            LastEdition: now
+            LastEdition: now,
+            AcademicYear: currentYear
         }
 
         const ideaUpdateCondition = { _id: req.params.id }
@@ -216,102 +283,119 @@ router.delete('/:id', verifyToken, async (req, res) => {
 // @access Private
 router.get('/home', verifyToken, async (req, res) => {
 	try {
-        // query to join cmt, user, idea
-        const ideas = await Idea.aggregate([
-            {
-                $match:{}
-            },
-            {
-              $lookup: {
-                from: "commentideas",
-                localField: "_id",
-                foreignField: "IdeaId",
-                as: "comments"
-              }
-            },
-
-            {
-              $lookup: {
-                from: "users",
-                localField: "UserId",
-                foreignField: "_id",
-                as: "users"
-              }
-            },
-            {
-              $lookup: {
-                from: "categories",
-                localField: "CategoryId",
-                foreignField: "_id",
-                as: "category"
-              }
-            },
-            {
-              $project: {
-                _id: 1,
-                Title: 1,
-                Description: 1,
-                LastEdition: 1,
-                userPost: {
-                    $map:{
-                        input: "$users",
-                        as: "user",
-                        in: {
-                          _id: "$$user._id",
-                          Name: "$$user.Name",
-                          Avatar: "$$user.Avatar",
-                        }
-                    } 
-                },
-                category: {
-                    $map: {
-                        input: "$category",
-                        as: "category",
-                        in:{
-                          _id:"$$category._id",
-                          Name:"$$category.Title"
-                        }
-                    }
-                },
-                comments: {
-                    $map: {
-                    input: "$comments",
-                    as: "comment",
-                    in: {
-                        _id: "$$comment._id",
-                        Content: "$$comment.Content",
-                        LastEdition: "$$comment.LastEdition",
-                        usercomment: {
-                            $arrayElemAt: [
-                                {
-                                  $map: {
-                                    input: {
-                                      $filter: {
-                                        input: "$users",
-                                        as: "u",
-                                        cond: { $eq: ["$$u._id", "$$comment.UserId"] }
-                                      }
-                                    },
-                                    as: "u",
-                                    in: {
-                                      _id: "$$u._id",
-                                      Name: "$$u.Name",
-                                      Avatar: "$$u.Avatar"
-                                    }
-                                  }
-                                },
-                                0
-                              ]
-                        },
-                    }
-                }
-            }
+    const ideas = await Idea.aggregate([
+      {
+          $match:{
+              
+          }
+      },
+      {
+        $lookup: {
+          from: "commentideas",
+          localField: "_id",
+          foreignField: "IdeaId",
+          as: "comments"
         }
-    },
-    {
-        $sort: { LastEdition: -1 }
-    }]);
-        //query to show all category
+      },
+      {
+        $lookup:{
+          from: "files",
+          localField: "_id",
+          foreignField: "IdeaId",
+          as: "files"
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "UserId",
+          foreignField: "_id",
+          as: "users"
+        }
+      },
+      {
+        $lookup: {
+          from: "categories",
+          localField: "CategoryId",
+          foreignField: "_id",
+          as: "category"
+        }
+      },
+      {
+        $project: {
+          _id: 1,
+          Title: 1,
+          Description: 1,
+          LastEdition: 1,
+          userPost: {
+              $map:{
+                  input: "$users",
+                  as: "user",
+                  in: {
+                    _id: "$$user._id",
+                    Name: "$$user.Name",
+                    Avatar: "$$user.Avatar",
+                  }
+              } 
+          },
+          category: {
+              $map: {
+                  input: "$category",
+                  as: "category",
+                  in:{
+                    _id:"$$category._id",
+                    Name:"$$category.Title"
+                  }
+              }
+          },
+          files:{
+            $map: {
+              input: "$files",
+              as: "file",
+              in:{
+                Url: "$$file.Link"
+              }
+            }
+          }
+          ,
+          comments: {
+              $map: {
+              input: "$comments",
+              as: "comment",
+              in: {
+                  _id: "$$comment._id",
+                  Content: "$$comment.Content",
+                  LastEdition: "$$comment.LastEdition",
+                  usercomment: {
+                      $arrayElemAt: [
+                          {
+                            $map: {
+                              input: {
+                                $filter: {
+                                  input: "$users",
+                                  as: "u",
+                                  cond: { $eq: ["$$u._id", "$$comment.UserId"] }
+                                }
+                              },
+                              as: "u",
+                              in: {
+                                _id: "$$u._id",
+                                Name: "$$u.Name",
+                                Avatar: "$$u.Avatar"
+                              }
+                            }
+                          },
+                          0
+                        ]
+                  },
+              }
+          }
+      }
+  }
+},
+{
+  $sort: { LastEdition: -1 }
+}]);
         const category = await Category.find()
 		res.json({ success: true, ideas,category})
 	} catch (error) {
@@ -320,5 +404,8 @@ router.get('/home', verifyToken, async (req, res) => {
 	}
 })
 
+
+
+  
 module.exports = router
 

@@ -6,6 +6,8 @@ const authRouter = require('./routes/auth');
 const datasetRouter = require('./routes/dataset')
 const ideaRouter = require('./routes/idea')
 const cateRouter = require('./routes/category')
+const commentRouter = require('./routes/comment')
+const fileRouter = require('./routes/file')
 
 const connectDB = async() => {
     try{
@@ -28,6 +30,8 @@ app.use('/api/auth', authRouter)
 app.use('/api/dataset', datasetRouter)
 app.use('/api/idea',ideaRouter)
 app.use('/api/category',cateRouter)
+app.use('/api/comment',commentRouter)
+app.use('/api/file',fileRouter)
 
 const PORT = 5000
 app.listen(PORT, () => console.log('running'))
