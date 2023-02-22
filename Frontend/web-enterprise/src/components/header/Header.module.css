@@ -1,6 +1,6 @@
-* {
-    margin: 0;
+*{
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -96,11 +96,11 @@
     text-decoration: none;
 }
 
-.dropdown-menu a:hover {
+.dropdownMenu a:hover {
     background-color: #f2f2f2;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdownMenu {
     display: block;
 }
 

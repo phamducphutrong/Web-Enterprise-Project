@@ -9,6 +9,7 @@ const Category = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   const [addCategoryForm, setAddCategoryForm] = useState({
     Title: '',
     Description: '',
@@ -23,6 +24,9 @@ const Category = () => {
     editingDateInnitiated: null,
     editingStatus: ''
   });
+
+  const { Title, Description, DateInnitiated, Status } = addCategoryForm;
+  const { _id, editingTitle, editingDescription, editingDateInnitiated, editingStatus } = editingCategory;
 
   useEffect(() => {
     try {
@@ -85,9 +89,6 @@ const Category = () => {
     });
   }
 
-  const { Title, Description, DateInnitiated, Status } = addCategoryForm;
-  const { _id, editingTitle, editingDescription, editingDateInnitiated, editingStatus } = editingCategory;
-
   const editCategory = event => {
     event.preventDefault();
     setShowEditModal(false);
@@ -108,7 +109,7 @@ const Category = () => {
       } catch (error) {
         console.error(error.response.data);
       }
-    })()
+    })();
   }
 
   const deleteCategory = event => {

@@ -1,16 +1,12 @@
+* {
+    box-sizing: unset;
+}
+
 .container {
     display: flex;
     flex-direction: row;
     resize: both;
     overflow: auto;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-right: 10px;
 }
 
 .line {
@@ -42,6 +38,7 @@
 .middleSection {
     width: 50%;
     padding-left: 10%;
+    padding-right: 10%;
     margin-left: 20%;
     margin-right: 20%;
     text-align: justify;
@@ -64,6 +61,17 @@
     padding: 0 40px;
 }
 
+/* CSS cho modal 
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: white;
+    border: 1px solid black;  
+}  */
+
 .arialLabel {
     background-color: #FAE6E6;
     border: none;
@@ -82,16 +90,27 @@
 .nameDisplay {
     margin-bottom: 3%;
     font-size: 20px;
-} 
+}
 
 .dateDisplay {
     font-size: 12px;
 }
 
+.nameDateDot {
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dot {
+    padding-left: 50%;
+}
+
 .inputText {
-    width: 90%;
+    width: 500px;
     margin-left: 20px;
     border-radius: 15px;
+    height: 30px;
 }
 
 .textInput {
@@ -103,8 +122,48 @@
     padding: 15px 15px;
 }
 
+.cameraIconComment {
+    position: absolute;
+    right: 10px;
+    transform: translateX(-30%);
+    color: #ccc;
+}
 
+.cameraIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+}
 
+.cameraIcon i {
+    font-size: 18px;
+}
+
+.modalComment {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    width: 30%;
+    height: 50%;
+    border-radius: 15px;
+}
+
+.modalDiv {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
 .likeDislikeComment {
     display: block;
@@ -137,6 +196,13 @@
     height: 30px;
 }
 
+.closeComment {
+    margin-right: 10px;
+    border-radius: 15px;
+    width: 70px;
+    height: 30px;
+}
+
 .commentSection {
     display: flex;
     align-items: center;
@@ -156,7 +222,7 @@
     padding-top: 10px;
 }
 
-.homepageForm {
+form {
     display: flex;
     align-items: center;
     padding-top: 30px;
@@ -181,4 +247,19 @@ ul {
 
 li {
     margin-bottom: 10px;
+}
+
+.inputModalComment {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+::placeholder{
+    font-size: 16px;
+    padding-left: 2%;
 }

@@ -51,7 +51,10 @@ router.post('/login',async(req,res)=>{
         }
         ({Role} = userValid)
         const accessToken = token.sign(
-			{ userId: userValid._id },
+			{
+                userId: userValid._id, 
+                exp: Math.floor(Date.now() / 1000) + (30 * 24 * 60 * 60),
+                },
 			process.env.ACCESS_TOKEN_SECRET
 		)
         return res.status(200).json({
@@ -67,5 +70,6 @@ router.post('/login',async(req,res)=>{
 		return res.status(500).json({ success: false, message: 'Internal server error'})
     }
 })
+
 
 module.exports = router

@@ -1,4 +1,5 @@
-
+  const archiver = require('archiver');
+  const fs = require('fs');
   const verifyToken = require('../middleware/auth')
   const Idea = require('../models/Idea')
   const File = require('../models/File')
@@ -51,6 +52,24 @@
     else{
       res.json({'success':false,'message':'Not finish fist closure date'})
     }
+  });
+
+  router.get('/downloadzip', (req, res) => {
+    const output = fs.createWriteStream('uploads.zip');
+    const archive = archiver('zip', {
+      zlib: { level: 9 } // Set the compression level
+    });
+  
+    // Add all uploaded files to the archive
+    archive.directory('./Public/uploads/', false);
+  
+    // Send the ZIP archive to the client for download
+    archive.pipe(output);
+    output.on('close', () => {
+      res.download('uploads.zip', 'uploads.zip');
+      console.log('ZIP archive created and sent for download');
+    });
+    archive.finalize();
   });
   
 

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Header from '../header/Header'
+import style from './Homepage.module.css';
+import Modal from "react-modal";
 
-import style from "./Homepage.module.css";
+Modal.setAppElement("#root");
 
 function Homepage() {
 
@@ -25,6 +27,47 @@ function Homepage() {
         event.target.elements.comment.value = '';
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(false); // state cho việc mở và đóng modal
+
+    function openModal() {
+        setIsModalOpen(true);
+    }
+
+    function closeModal() {
+        setIsModalOpen(false);
+    }
+
+    const [isModalOpenAvatar, setIsModalOpenAvatar] = useState(false); // state cho việc mở và đóng modal
+
+    function openModalAvatar() {
+        setIsModalOpenAvatar(true);
+    }
+
+    function closeModalAvatar() {
+        setIsModalOpenAvatar(false);
+    }
+
+    const [isModalOpenUpdateDeleteIdea, setIsModalOpenUpdateDeleteIdea] = useState(false); // state cho việc mở và đóng modal
+
+    function openModalUpdateDeleteIdea() {
+        setIsModalOpenUpdateDeleteIdea(true);
+    }
+
+    function closeModalUpdateDeleteIdea() {
+        setIsModalOpenUpdateDeleteIdea(false);
+    }
+
+    const [isModalOpenUpdate, setIsModalOpenUpdate] = useState(false); // state cho việc mở và đóng modal
+
+    function openModalUpdate() {
+        setIsModalOpenUpdate(true);
+    }
+
+    function closeModalUpdate() {
+        setIsModalOpenUpdate(false);
+    }
+
+
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
 
@@ -45,41 +88,82 @@ function Homepage() {
         <div>
             <Header />
             <div className={style.container}>
-
-                <div className={style['left-sidebar']}>
-
+                <div className={style.leftSidebar}>
                     <ul>
-                        <li>Home</li>
-                        <li>Profile</li>
-                        <li>Idea</li>
-                        <li>Comment</li>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">Idea</a></li>
+                        <li><a href="">Comment</a></li>
                     </ul>
                 </div>
-
-                <div className={style['middle-section']}>
-                    <h2>Posts</h2>
+                <div className={style.middleSection}>
+                    <h2 className={style.post}>Posts</h2>
                     <ul>
-                        <li className={style['arial-label']}>
-                            <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Aa58ZvsOtyQAX-xk8VM&tn=XxsEV1fe8eY9p6hm&_nc_ht=scontent.fhan15-1.fna&oh=00_AfDn_60rxz8p9jtoQpQwPwCq2XiC5kVvUBauvK4Lxcn4Yw&oe=63ED11D5" alt="avatar" class={style.avatar} />
-                            <input type="text" name="comment" className={style['input-text']} placeholder="Input nội dung"/>
-                        </li>
-                        <li>
-                            
+                        <li className={style.arialLabel}>
+                            <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logo} />
+                            <div className={style.inputContainer}>
+                                <input type="text" name="comment" className={style.inputText} placeholder="Input nội dung" onClick={openModalAvatar} />
+                                <span className={style.cameraIcon}><i className="fas fa-camera"></i></span>
+                            </div>
+                            <Modal className={style.modal1}
+                                isOpen={isModalOpenAvatar}
+                                onRequestClose={closeModalAvatar}
+                                contentLabel="Example Modal"
+                            >
+                                <h1>Quân le</h1>
+                                <button onClick={closeModalAvatar}>Đóng modal</button>
+                            </Modal>
                         </li>
                         <div className={style.line}>
                         </div>
                     </ul>
                     <ul>
-
-                        <li className={style['text-input']}>
-                            In the above code, the import keywords are used to import the Apple() and Windows() functions, exported by the "America.js" file.
-                            Also, we need to wrap the functions or values inside the curly braces { } and must have to put the same name as defined from where they
-                            are being exported. That’s why these imports are called Named export. We can not change the name of the imported bindings aka (Functions/Values/Classes).
-                            But also we can import multiple bindings into a single line of code, separated by commas(, )
-                            <div className={style['like-dislike']}>
-                                <div className={style['interaction-buttons']}>
-                                    <button onClick={handleLikeClick} className={style.like}><i class="fa fa-thumbs-up"></i></button>
-                                    <button onClick={handleDislikeClick} className={style.dislike}><i class="fa fa-thumbs-down"></i></button>
+                        <li className={style.textInput}>
+                            <div className={style.avatarNameDate}>
+                                <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logo} />
+                                <div className={style.nameDateDot}>
+                                    <div className={style.nameDate}>
+                                        <div className={style.nameDisplay}>Quân Lê</div>
+                                        <div className={style.dateDisplay}>1 hour ago</div>
+                                    </div>
+                                    <div className={style.dot}><h1 type="button" onClick={openModalUpdateDeleteIdea}>...</h1></div>
+                                    <Modal className={style.modalComment}
+                                        isOpen={isModalOpenUpdateDeleteIdea}
+                                        onRequestClose={closeModalUpdateDeleteIdea}
+                                        contentLabel="Example Modal">
+                                        <a href="#" type="button" onClick={openModalUpdate}>Update Idea</a>
+                                        <Modal className={style.modalComment}
+                                            isOpen={isModalOpenUpdate}
+                                            onRequestClose={closeModalUpdate}
+                                            contentLabel="Example Modal">
+                                            <table>
+                                                <tr>
+                                                    <th>Company</th>
+                                                    <th>Contact</th>
+                                                    <th>Country</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alfreds Futterkiste</td>
+                                                    <td>Maria Anders</td>
+                                                    <td>Germany</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Centro comercial Moctezuma</td>
+                                                    <td>Francisco Chang</td>
+                                                    <td>Mexico</td>
+                                                </tr>
+                                            </table>
+                                            <div className={style.modalDiv}>
+                                                <button onClick={handleDislikeClick} className={style.dislike}>Submit</button>
+                                                <button onClick={closeModalUpdate} className={style.closeComment}><i class="fa fa-close"></i></button>
+                                            </div>
+                                        </Modal>
+                                        <a href="#">Delete Idea</a>
+                                        <a href="#">Download .CSV</a>
+                                        <div className={style.modalDiv}>
+                                            <button onClick={closeModalUpdateDeleteIdea} className={style.closeComment}><i class="fa fa-close"></i></button>
+                                        </div>
+                                    </Modal>
                                 </div>
                             </div>
                             <div className={style.content}>
@@ -88,17 +172,29 @@ function Homepage() {
                                 are being exported. That’s why these imports are called Named export. We can not change the name of the imported bindings aka (Functions/Values/Classes).
                                 But also we can import multiple bindings into a single line of code, separated by commas(,)
                             </div>
-                            <img className={style.imgBody} src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-6/279124471_1370043140139558_7697343296375162295_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=BEaMNFz7QxcAX8AUCBi&_nc_ht=scontent.fhan1-1.fna&oh=00_AfAui5DKlW7l4nLJw6oE3WLHxZoYJnDlmi_rHtzlnaZGDw&oe=63F30095" />
+                            <img className={style.imgBody} src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" />
                             <div className={style.line}></div>
                             <div className={style.likeDislikeComment}>
                                 <div className={style.interactionButtons}>
                                     <button onClick={handleLikeClick} className={style.like}><i class="fa fa-thumbs-up"></i></button>
                                     <button onClick={handleDislikeClick} className={style.dislike}><i class="fa fa-thumbs-down"></i></button>
-                                    <button onSubmit={handleCommentSubmit} className={style.comment}><i class="fa fa-comment"></i></button>
+                                    <button type="button" className={style.comment} onClick={openModal}><i class="fa fa-comment"></i></button>
+                                    <Modal className={style.modalComment}
+                                        isOpen={isModalOpen}
+                                        onRequestClose={closeModal}
+                                        contentLabel="Example Modal">
+                                        <div className={style.modalDiv}>
+                                            <input className={style.inputModalComment} type="text" name="comment" placeholder="Comment here" />
+                                            <button onClick={handleLikeClick} className={style.like}><i class="fa fa-thumbs-up"></i></button>
+                                            <button onClick={handleDislikeClick} className={style.dislike}><i class="fa fa-thumbs-down"></i></button>
+                                            <button onClick={closeModal} className={style.closeComment}><i class="fa fa-close"></i></button>
+                                        </div>
+                                    </Modal>
                                 </div>
                                 <div className={style.commentSection}>
-                                    <form className={style.homepageForm} onSubmit={handleCommentSubmit}>
-                                        <textarea className={style.inputComment} type="text" name="comment" placeholder="Comment here" />
+                                    <form onSubmit={handleCommentSubmit}>
+                                        <input className={style.inputComment} type="text" name="comment" placeholder="Comment here" />
+                                        <span className={style.cameraIconComment}><i className="fas fa-camera"></i></span>
                                     </form>
                                     <ul>
                                         {comments.map((comment, index) => (
@@ -110,8 +206,7 @@ function Homepage() {
                         </li>
                     </ul>
                 </div>
-
-                <div className={style['right-sidebar']}>
+                <div className={style.rightSidebar}>
                     <ul>
                         <li>Category 4</li>
                         <li>Category 5</li>
@@ -123,4 +218,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default Homepage
