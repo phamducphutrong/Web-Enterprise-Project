@@ -1,8 +1,8 @@
 .container {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     resize: both;
-    overflow: auto;
+    overflow: auto; */
 }
 
 .line {
@@ -34,7 +34,6 @@
 .middleSection {
     width: 50%;
     padding-left: 10%;
-    padding-right: 10%;
     margin-left: 20%;
     margin-right: 20%;
     text-align: justify;
@@ -235,13 +234,13 @@
     font-size: 16px;
 }
 
-ul {
+.homepageUl {
     list-style: none;
     padding: 0;
     margin-top: 20px;
 }
 
-li {
+.homepageLi {
     margin-bottom: 10px;
 }
 

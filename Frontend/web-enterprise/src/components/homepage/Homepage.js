@@ -207,8 +207,8 @@ function Homepage() {
                     </ul>
                 </div>
                 <div className={style.rightSidebar}>
-                    <ul>
-                        <li>Category 4</li>
+                    <ul className={style.homepageUl}>
+                        <li className={style.homepageLi}>Category 4</li>
                         <li>Category 5</li>
                         <li>Category 6</li>
                     </ul>
