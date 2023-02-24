@@ -196,7 +196,7 @@ function Profile() {
                                     </Modal>
                                 </div>
                                 <div className={style.commentSection}>
-                                    <form onSubmit={handleCommentSubmit}>
+                                    <form className={style.profileForm} onSubmit={handleCommentSubmit}>
                                         <input className={style.inputComment} type="text" name="comment" placeholder="Comment here" />
                                         <span className={style.cameraIconComment}><i className="fas fa-camera"></i></span>
                                     </form>

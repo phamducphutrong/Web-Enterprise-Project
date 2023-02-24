@@ -1,7 +1,3 @@
-* {
-    box-sizing: unset;
-}
-
 .container {
     display: flex;
     flex-direction: row;
@@ -222,7 +218,7 @@
     padding-top: 10px;
 }
 
-form {
+.homepageForm {
     display: flex;
     align-items: center;
     padding-top: 30px;
