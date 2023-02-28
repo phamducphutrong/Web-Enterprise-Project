@@ -1,2 +1,3 @@
 export const apiUrl = 'http://localhost:5000/api'
+export const userId = 'userId'
 export const LOCAL_STORAGE_TOKEN_NAME = 'localStorageName'

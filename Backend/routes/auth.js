@@ -49,7 +49,7 @@ router.post('/login',async(req,res)=>{
         {
             return res.status(400).json({success:false,message:"Username or password is invalid"})
         }
-        ({Role} = userValid)
+        ({Role, _id} = userValid)
         const accessToken = token.sign(
 			{
                 userId: userValid._id, 
@@ -61,6 +61,7 @@ router.post('/login',async(req,res)=>{
             success: true,
             message: "Logged in successfully",
             accessToken,
+            userId: _id,
             Role
         })
     }

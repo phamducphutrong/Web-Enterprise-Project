@@ -53,8 +53,8 @@ const uploadPath = path.join(__dirname, '../Public/uploads/');
 // @route POST api/ideas
 // @desc Create idea
 // @access Private
-router.post('/',upload.array('documents', 10), verifyToken, async(req, res) => {
-  const files = req.files;
+router.post('/create',upload.array('documents', 10), async(req, res) => {
+    const files = req.files;
     const{ Title, Description, UserId, CategoryId } = req.body
 
     if(!Title)

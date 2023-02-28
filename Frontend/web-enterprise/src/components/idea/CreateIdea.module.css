@@ -1,0 +1,195 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.modalCreateIdea {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/* .modalOverlayCreateIdea {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+} */
+
+.modalBodyCreateIdea {
+  width: 700px;
+  height: 700px;
+  background-color: white;
+  margin: auto; /* can giua */
+  position: relative;
+  z-index: 1; /*Ông nào có thuộc tính z-index cao nhất thì nằm bên trên*/
+  border-radius: 10px;
+}
+
+/* header */
+.CreateIdeaHeader {
+  position: absolute;
+  width: 100%;
+  height: 18%;
+  background-color:#FAE6E6 ;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid gray;
+}
+
+h1 {
+  font-size: 145%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+/* Avatar-name */
+.CreateIdeaContent {
+  position: absolute;
+  width: 100%;
+  height: 24%;
+  margin-top: 18%;
+}
+h2 {
+  font-size: 70%;
+  margin: 5% 14% 19% 42%;
+}
+.CreateIdeaAvt {
+  width: 12%;
+  height: 51%;
+  margin: 5% 0 0 6%;
+  border-radius: 50%;
+}
+.avtIdea {
+  width: 99%;
+  height: 95%;
+  margin: -4% 0 0 0%;
+  border-radius: 50%;
+}
+
+.CreateIdeaName {
+  margin: -10% 0 0 20%;
+}
+
+.gach {
+  width: 86%;
+  height: 1%;
+  margin: 8% 0 0 6%;
+  background-color: gray;
+}
+
+.CreateIdeaFooter {
+  position: absolute;
+  width: 100%;
+  height: 58%;
+  margin-top: 42%;
+}
+
+/* cuoi */
+.footerLeft {
+  width: 78%;
+  height: 100%;
+}
+
+.inputIdea {
+  height: 77%;
+}
+
+.InputForm {
+  width: 100%;
+  border: none;
+  outline: none;
+  margin: 2% 8% 6% 8%;
+}
+
+.addInfor {
+  width: 86%;
+  height: 17%;
+  margin: -14% 0 0 7%;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+.add {
+  font-size: 96%;
+  padding: 4%;
+  padding-right: 11%;
+}
+
+.changeColor {
+  background-image: url(https://i.pinimg.com/736x/01/a4/b1/01a4b1f77a97ec72e562f3fad39adbaf.jpg);
+  width: 10%;
+  height: 71%;
+  margin: -15% 0 0 60%;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.imgChange {
+  width: 119%;
+  height: 115%;
+  margin: -5% 0 0 -10%;
+  border-radius: 50%;
+}
+.footerLeftIcon {
+  background-image: url(https://i.pinimg.com/736x/01/a4/b1/01a4b1f77a97ec72e562f3fad39adbaf.jpg);
+  width: 11%;
+  height: 71%;
+  margin: -10% 0 0 82%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.submitIdea1 {
+  height: 18%;
+  margin-top: 12%;
+}
+
+.submitIdea2 {
+  width: 86%;
+  height: 84%;
+  margin: -8% 0 0 7%;
+  cursor: pointer;
+}
+
+.submitIdea3 {
+  width: 100%;
+  height: 93%;
+  background-color: #2374e1;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bold;
+}
+
+.footerRight {
+  margin: -58% 10% 76% 77%;
+  width: 23%;
+}
+.addImage {
+  margin: 7% 0% 0% 20%;
+  cursor: pointer;
+}
+
+.addImage2 {
+  margin: 7% 0% 0% 20%;
+  cursor: pointer;
+}
+.addImage3 {
+  margin: 7% 0% 0% 20%;
+  cursor: pointer;
+}
+.addImage4 {
+  margin: 7% 0% 0% 20%;
+  cursor: pointer;
+}
+
+.closeModalCreateIdea {
+  border: none;
+  margin: 47% 0% 0% 8%;
+  width: 64px;
+  height: 34px;
+  border-radius: 6px;
+}
