@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
+import CreateIdea from "../idea/CreateIdea";
 import style from './Body.module.css';
 
 Modal.setAppElement("#root");
@@ -47,7 +48,7 @@ function Body() {
 
     return (
         <ul>
-            <li className={style.arialLabel}>
+            {/*<li className={style.arialLabel}>
                 <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logoAvatar} />
                 <div className={style.inputContainer}>
                     <input type="text" name="comment" className={style.inputText} placeholder="Input nội dung" onClick={openModalAvatar} />
@@ -61,7 +62,8 @@ function Body() {
                     <h1>Quân le</h1>
                     <button onClick={closeModalAvatar}>Đóng modal</button>
                 </Modal>
-            </li>
+            </li>*/}
+            <CreateIdea/>
             <div className={style.line}></div>
             <li className={style.textInput}>
                 <div className={style.avatarNameDate}>
@@ -137,7 +139,7 @@ function Body() {
                     are being exported. That’s why these imports are called Named export. We can not change the name of the imported bindings aka (Functions/Values/Classes).
                     But also we can import multiple bindings into a single line of code, separated by commas(,)
                 </div>
-                <img className={style.imgBody} src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" />
+                <img className={style.imgBody} src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97"/>
                 <div className={style.line}></div>
                 <div className={style.likeDislikeComment}>
                     <div className={style.interactionButtons}>
@@ -164,6 +166,7 @@ function Body() {
                     </div>
                 </div>
             </li>
+            
         </ul>
     );
 };

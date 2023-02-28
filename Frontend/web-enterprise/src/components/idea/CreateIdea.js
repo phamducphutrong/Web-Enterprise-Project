@@ -7,13 +7,13 @@ export default function CreateIdea() {
 
     return (
         <>
-            <button
-                className={style.btnModalCreateIdea}
-                onClick={() => setOpenIdea(true)}
-            >
-                Open
-            </button>
-
+            <li className={style.arialLabel}>
+                <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logoAvatar} />
+                <div className={style.inputContainer}>
+                    <input type="text" name="comment" className={style.inputText} placeholder="Input nội dung" onClick={() => setOpenIdea(true)} />
+                    <span className={style.cameraIcon}><i className="fas fa-camera"></i></span>
+                </div>
+            </li>
             {openIdea && (
                 <div className={style.modalCreateIdea}>
                     <div className={style.modalBodyCreateIdea}>
