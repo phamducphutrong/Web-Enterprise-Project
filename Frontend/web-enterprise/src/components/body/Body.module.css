@@ -1,0 +1,231 @@
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: #bcb9b9;
+    margin: 20px 0
+}
+
+.logoAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.arialLabel {
+    background-color: #FAE6E6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%;
+    padding: 15px 15px;
+    display: flex;
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.inputText {
+    width: 95%;
+    padding-left: 2px;
+    border-radius: 15px;
+    border-color: pink;
+    height: 30px;
+}
+
+.avatarNameDate {
+    display: flex;
+    align-items: center;
+}
+
+.nameDisplay {
+    margin-bottom: 3%;
+    font-size: 20px;
+}
+
+.dateDisplay {
+    font-size: 12px;
+}
+
+.nameDateDot {
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dot {
+    padding-left: 50%;
+}
+
+.textInput {
+    background-color: #FAE6E6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%;
+    padding: 15px 15px;
+}
+
+.cameraIconComment {
+    position: absolute;
+    right: 10px;
+    transform: translateX(-30%);
+    color: #ccc;
+}
+
+.cameraIcon {
+    position: absolute;
+    right: 9%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+}
+
+.cameraIcon i {
+    font-size: 18px;
+}
+
+.modalComment {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    width: 30%;
+    height: 50%;
+    border-radius: 15px;
+
+}
+
+.modalUpdate {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    width: 70%;
+    height: 65%;
+    border-radius: 15px;
+}
+
+.modalDiv {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+
+.likeDislikeComment {
+    display: block;
+    align-items: center;
+}
+
+.interactionButtons {
+    display: flex;
+    align-items: center;
+    padding-right: 20%;
+}
+
+.like {
+    margin-right: 10px;
+    width: 70px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.dislike {
+    margin-right: 10px;
+    border-radius: 15px;
+    width: 70px;
+    height: 30px;
+}
+
+.comment {
+    border-radius: 15px;
+    width: 70px;
+    height: 30px;
+}
+
+.closeComment {
+    margin-right: 10px;
+    border-radius: 15px;
+    width: 70px;
+    height: 30px;
+}
+
+.commentSection {
+    display: flex;
+    align-items: center;
+    padding-right: 15%;
+    width: 115%;
+}
+
+.content {
+    padding-top: 15px;
+}
+
+.imgBody {
+    display: flex;
+    align-items: center;
+    padding-right: 15%;
+    padding-left: 15%;
+    width: 100%;
+    height: 70%;
+    padding-top: 10px;
+    filter: blur(0.5px);
+}
+
+.homepageForm {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    position: relative;
+    bottom: 15px;
+    width: 100%;
+}
+
+.inputComment {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+.homepageUl {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.homepageLi {
+    margin-bottom: 10px;
+}
+
+.inputModalComment {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+::placeholder{
+    font-size: 16px;
+    padding-left: 2%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}

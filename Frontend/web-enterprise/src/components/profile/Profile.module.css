@@ -5,7 +5,7 @@
 .line {
     width: 100%;
     height: 1px;
-    background-color: #000;
+    background-color: #bebbbbcf;
     margin: 20px 0
 }
 
@@ -18,229 +18,79 @@
 }
 
 .logoProfile {
-    width: 25%;
-    height: 25%;
-    border-radius: 80px;
-    overflow: hidden;
-    margin-right: 10px;
-}
-
-
-
-.leftSidebar {
-    width: 15%;
-    top: 0;
-    position: fixed;
-    left: 0;
+    width: 100%;
     height: 100%;
-    background-color: #f2f2f2;
-    margin-top: 55px;
-    padding: 0 40px;
+    border-radius: 100px;
+    overflow: hidden;
 }
 
-.middleSection {
-    width: 70%;
+.avatarProfile {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.profileName {
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    height: 100%;
+    padding: 15px 15px;
+    display: flex;
+    width: 100%;
+}
+
+.nameInfo {
+    width: 100%;
+    display: block;
+    justify-content: space-between;
+    padding-left: 20%;
+}
+
+.nameProfile {
+    font-size: 250%;
+}
+
+.nameAndBtn {
+    display: flex;
+    width: 100%;
+}
+
+.profileDescription {
+    display: flex;
+    margin-top: 10%;
+}
+
+.posts {
+    font-size: 20px;
+}
+
+.friends {
     padding-left: 10%;
-    padding-right: 10%;
-    margin-left: 20%;
-    margin-right: 20%;
+    font-size: 20px;
+}
+
+.Section {
+    width: 100%;
+    height: 100%;
+    padding-left: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
     text-align: justify;
     background-color: #fff;
     margin-top: 55px;
 }
 
-.post {
-    padding-top: 15px;
-}
-
-.arialLabel {
-    background-color: #FAE6E6;
+.btnEditProfile {
+    width: 15%;
+    border-radius: 10px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 100%;
-    padding: 15px 15px;
-    display: flex;
+    margin-left: 10%;
 }
 
-.avatarNameDate {
-    display: flex;
-    align-items: center;
-}
-
-.nameDisplay {
-    margin-bottom: 3%;
-    font-size: 20px;
-}
-
-.dateDisplay {
-    font-size: 12px;
-}
-
-.nameDateDot {
-    display:flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.dot {
-    padding-left: 50%;
-}
-
-.inputText {
-    width: 500px;
-    margin-left: 20px;
-    border-radius: 15px;
-    height: 30px;
-}
-
-.textInput {
-    background-color: #FAE6E6;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 100%;
-    padding: 15px 15px;
-}
-
-.cameraIconComment {
-    position: absolute;
-    right: 10px;
-    transform: translateX(-30%);
+.iconSetting {
     color: #ccc;
-}
-
-.cameraIcon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ccc;
-}
-
-.cameraIcon i {
-    font-size: 18px;
-}
-
-.modalComment {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid black;
-    width: 30%;
-    height: 50%;
-    border-radius: 15px;
-}
-
-.modalDiv {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-}
-
-.inputContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.likeDislikeComment {
-    display: block;
-    align-items: center;
-}
-
-.interactionButtons {
-    display: flex;
-    align-items: center;
-    padding-right: 20%;
-}
-
-.like {
-    margin-right: 10px;
-    width: 70px;
-    height: 30px;
-    border-radius: 15px;
-}
-
-.dislike {
-    margin-right: 10px;
-    border-radius: 15px;
-    width: 70px;
-    height: 30px;
-}
-
-.comment {
-    border-radius: 15px;
-    width: 70px;
-    height: 30px;
-}
-
-.closeComment {
-    margin-right: 10px;
-    border-radius: 15px;
-    width: 70px;
-    height: 30px;
-}
-
-.commentSection {
-    display: flex;
-    align-items: center;
-    padding-right: 15%;
-}
-
-.content {
-    padding-top: 15px;
-}
-
-.imgBody {
-    display: flex;
-    align-items: center;
-    padding-right: 15%;
-    width: 100%;
-    height: 70%;
-    padding-top: 10px;
-}
-
-.profileForm {
-    display: flex;
-    align-items: center;
-    padding-top: 30px;
-    position: relative;
-    bottom: 15px;
-}
-
-.inputComment {
-    width: 550px;
-    height: 30px;
-    border-radius: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 16px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-.inputModalComment {
-    width: 100%;
-    height: 30px;
-    border-radius: 15px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-::placeholder{
-    font-size: 16px;
-    padding-left: 2%;
+    font-size: 250%;
+    padding-left: 10%;
 }

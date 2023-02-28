@@ -26,6 +26,14 @@ const Header = () => {
 			setFixed(false);
 		}
 	};
+
+	const [selectedOption, setSelectedOption] = useState('Select your option');
+	const [isActive, setIsActive] = useState(false);
+
+	const handleOptionClick = (option) => {
+		setSelectedOption(option);
+		setIsActive(false);
+	};
 	return (
 
 		<header className={fixed ? style.fixed : ""}>
@@ -43,6 +51,8 @@ const Header = () => {
 							<div class={style.dropdownMenu}>
 								<a href="#">Profile</a>
 								<a href="#">Settings</a>
+								<a href="#">Download file CSV</a>
+								<a href="#">Download all idea</a>
 								<a onClick={logout}>Logout</a>
 							</div>
 						</i>
