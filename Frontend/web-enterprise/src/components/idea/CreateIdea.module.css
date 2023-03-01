@@ -8,13 +8,9 @@
   left: 0;
   display: flex;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
-/* .modalOverlayCreateIdea {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  
-} */
+
 
 .modalBodyCreateIdea {
   width: 700px;
@@ -36,7 +32,7 @@
   border-bottom: 1px solid gray;
 }
 
-/*h1 {
+.CreateIdea {
   font-size: 145%;
   position: absolute;
   top: 50%;
@@ -45,7 +41,7 @@
   font-weight: bold;
 }
 
-h2 {
+/*h2 {
   font-size: 70%;
   margin: 5% 14% 19% 42%;
 }*/
@@ -67,18 +63,18 @@ h2 {
 .avtIdea {
   width: 99%;
   height: 95%;
-  margin: -4% 0 0 0%;
+  margin: -17% 0 0 0%;
   border-radius: 50%;
 }
 
 .CreateIdeaName {
-  margin: -10% 0 0 20%;
+  margin: -12% 0 0 20%;
 }
 
 .gach {
   width: 86%;
   height: 1%;
-  margin: 8% 0 0 6%;
+  margin: 10% 0 0 6%;
   background-color: gray;
 }
 
@@ -123,7 +119,7 @@ h2 {
   background-image: url(https://i.pinimg.com/736x/01/a4/b1/01a4b1f77a97ec72e562f3fad39adbaf.jpg);
   width: 10%;
   height: 71%;
-  margin: -15% 0 0 60%;
+  margin: -8% 0 0 60%;
   border-radius: 9px;
   cursor: pointer;
 }
@@ -131,7 +127,7 @@ h2 {
 .imgChange {
   width: 119%;
   height: 115%;
-  margin: -5% 0 0 -10%;
+  margin: -21% 0 0 -10%;
   border-radius: 50%;
 }
 
@@ -191,10 +187,12 @@ h2 {
 
 .closeModalCreateIdea {
   border: none;
-  margin: 47% 0% 0% 8%;
-  width: 64px;
-  height: 34px;
+  margin: 76% 0% 0% 8%;
+  width: 68px;
+  height: 42px;
   border-radius: 6px;
+
+  z-index: 99999999;
 }
 
 .line {
