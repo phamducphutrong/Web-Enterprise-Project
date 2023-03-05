@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import CreateIdea from "../idea/CreateIdea";
+import UpdateIdea from "../idea/UpdateIdea";
 import style from './Body.module.css';
 import axios from 'axios';
 
@@ -54,8 +55,9 @@ function Body() {
                             isOpen={isModalOpenUpdateDeleteIdea}
                             onRequestClose={closeModalUpdateDeleteIdea}
                             contentLabel="Example Modal">
-                            <a href="#" type="button" onClick={openModalUpdate}>Update Idea</a>
-                            <Modal className={style.modalUpdate}
+                            {/* <a href="#" type="button" onClick={openModalUpdate}>Update Idea</a> */}
+                            <UpdateIdea/>
+                            {/* <Modal className={style.modalUpdate}
                                 isOpen={isModalOpenUpdate}
                                 onRequestClose={closeModalUpdate}
                                 contentLabel="Example Modal">
@@ -100,7 +102,7 @@ function Body() {
                                     <button className={style.dislike}>Submit</button>
                                     <button onClick={closeModalUpdate} className={style.closeComment}><i class="fa fa-close"></i></button>
                                 </div>
-                            </Modal>
+                            </Modal> */}
                             <a href="#">Delete Idea</a>
                             <a href="#">Download .CSV</a>
                             <div className={style.modalDiv}>

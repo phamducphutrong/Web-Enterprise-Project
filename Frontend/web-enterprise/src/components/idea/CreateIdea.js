@@ -56,7 +56,19 @@ export default function CreateIdea() {
         )();
     }
     const { Title, Description, CategoryId } = createIdeaForm;
+    const [isChecked, setIsChecked] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
+    const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+    };
 
+    function handleCheckboxChange(event) {
+        setIsChecked(event.target.checked);
+    }
+
+    function handleChange(event) {
+        const selectedOptionCate = event.target.value;
+        }
     return (
         <>
             <li className={style.arialLabel}>
@@ -81,6 +93,19 @@ export default function CreateIdea() {
                                 <img src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" className={style.avtIdea} />
                             </div>
                             <div className={style.CreateIdeaName}>Phương Anh</div>
+
+                                <div className={style.dropdownMode}>                                   				               
+                                    <div class={style.dropdown_content}> 
+								        <select className={style.selectCate} onChange={handleChange}> 
+                                            <option value="option1">Xoài</option>
+                                            <option value="option2">Nhãn lồng</option>
+                                            <option value="option3">Vải thiều</option>
+                                        </select>
+					                </div>
+                                </div>	
+					             	
+                           
+                                        
                             <div className={style.gach}></div>
                         </div>
                         {/* Cuối */}
@@ -99,10 +124,19 @@ export default function CreateIdea() {
                                     </select>
                                 </div>
                                 <div className={style.addInfor}>
-                                    <h3 className={style.add}>Add to your posts</h3>
+                                <label>
+                                    <input className={style.add} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                    Công khai
+                                </label>
+                                <label>
+                                    <input className={style.Ccate} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                    Ẩn danh
+                                </label>
+                                {/* {selectedOption === 'A' ? <p>Option A is selected</p> : <p>Option B is selected</p>} */}
+                                    
+                                   
                                     <div className={style.changeColor}>
                                         <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
-
                                     </div>
                                     <div className={style.footerLeftIcon}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
@@ -110,6 +144,19 @@ export default function CreateIdea() {
                                             <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
                                         </svg>
                                     </div>
+                                </div>
+                                <div className={style.condition}>    
+                                        <label className={style.agreeCondition}>
+                                            <input className={style.agreeCon}
+                                            type="checkbox"
+                                            checked={isChecked}
+                                            onChange={handleCheckboxChange}
+                                        />
+                                        <div className={style.text}>
+                                            I agree to Terms and Conditions  
+                                        </div>
+                                        
+                                        </label>
                                 </div>
                                 <div className={style.submitIdea1}>
                                     <div className={style.submitIdea2}>
@@ -120,18 +167,7 @@ export default function CreateIdea() {
                                 </div>
                             </div>
                             <div className={style.footerRight}>
-                                <div className={style.addImage}>
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png" width="28" height="28" className={style.addImage} />
-                                </div>
-                                <div className={style.addImage2}>
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/MqTJr_DM3Jg.png" width="28" height="28" className={style.addImage2} />
-                                </div>
-                                <div className={style.addImage}>
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" width="28" height="28" className={style.addImage3} />
-                                </div>
-                                <div className={style.addImage2}>
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/_cAtN_ZFj9c.png" width="28" height="28" className={style.addImage4} />
-                                </div>
+                                
                                 <button
                                     className={style.closeModalCreateIdea}
                                     onClick={() => setOpenIdea(false)}
