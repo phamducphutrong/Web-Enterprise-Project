@@ -215,7 +215,7 @@ router.get('/profile/:id', async (req, res) => {
 // @route PUT api/idea
 // @desc Update idea
 // @access Private
-router.put('/:id',verifyToken, async(req, res) => {
+router.put('/:id', async(req, res) => {
     const{ Title, Description} = req.body
 
     if(!Title) 
@@ -260,7 +260,7 @@ router.put('/:id',verifyToken, async(req, res) => {
 // @route DELETE api/idea
 // @desc Delete idea
 // @access Private
-router.delete('/:id', verifyToken, async (req, res) => {
+router.delete('/:id', async (req, res) => {
 	try {
 		const ideaDeleteCondition = { _id: req.params.id }
 		const deletedIdea = await Idea.findOneAndDelete(ideaDeleteCondition)
@@ -282,7 +282,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
 // @route GET api/idea/home
 // @desc Get all ideas
 // @access Private
-router.get('/home', verifyToken, async (req, res) => {
+router.get('/home', async (req, res) => {
 	try {
     const ideas = await Idea.aggregate([
       {
