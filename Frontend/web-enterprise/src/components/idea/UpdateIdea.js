@@ -1,38 +1,27 @@
 import React, { useState } from "react";
-import style from "./CreateIdea.module.css";
+import style from "./UpdateIdea.module.css";
 
 
-export default function CreateIdea() {
-    const [openIdea, setOpenIdea] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
+export default function UpdateIdea() {
+    const [openModalUpdateIdea, setOpenUpdateIdea] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
     const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
     };
-
-    function handleCheckboxChange(event) {
-        setIsChecked(event.target.checked);
-    }
 
     function handleChange(event) {
         const selectedOptionCate = event.target.value;
         }
     return (
         <>
-            <li className={style.arialLabel}>
-                <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logoAvatar} />
-                <div className={style.inputContainer}>
-                    <input type="text" name="comment" className={style.inputText} placeholder="Input nội dung" onClick={() => setOpenIdea(true)} />
-                    <span className={style.cameraIcon}><i className="fas fa-camera"></i></span>
-                </div>
-            </li>
-            {openIdea && (
+            <a className={style.hrOpen} href="#" type="button"  onClick={() => setOpenUpdateIdea(true)}>Update Idea</a>
+            {openModalUpdateIdea && (
                 <div className={style.modalCreateIdea}>
                     <div className={style.modalBodyCreateIdea}>
                         <div className={style.modalInnerCreateIdea}>
                             {/* đầu */}
                             <div className={style.CreateIdeaHeader}>
-                                <h1 className={style.CreateIdea}>Create Idea </h1>
+                                <h1 className={style.CreateIdea}>Update Idea </h1>
                             </div>
                         </div>
                         {/* Thân */}
@@ -42,7 +31,7 @@ export default function CreateIdea() {
                             </div>
                             <div className={style.CreateIdeaName}>Phương Anh</div>
 
-                                <div className={style.dropdownMode}>                                   				               
+                                <div className={style.dropdownMode}>
                                     <div class={style.dropdown_content}> 
 								        <select className={style.selectCate} onChange={handleChange}> 
                                             <option value="option1">Xoài</option>
@@ -51,8 +40,7 @@ export default function CreateIdea() {
                                         </select>
 					                </div>
                                 </div>	
-					             	
-                           
+                            
                                         
                             <div className={style.gach}></div>
                         </div>
@@ -71,9 +59,6 @@ export default function CreateIdea() {
                                     <input className={style.Ccate} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
                                     Ẩn danh
                                 </label>
-                                {/* {selectedOption === 'A' ? <p>Option A is selected</p> : <p>Option B is selected</p>} */}
-                                    
-                                   
                                     <div className={style.changeColor}>
                                         <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
                                     </div>
@@ -84,19 +69,7 @@ export default function CreateIdea() {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className={style.condition}>    
-                                        <label className={style.agreeCondition}>
-                                            <input className={style.agreeCon}
-                                            type="checkbox"
-                                            checked={isChecked}
-                                            onChange={handleCheckboxChange}
-                                        />
-                                        <div className={style.text}>
-                                            I agree to Terms and Conditions  
-                                        </div>
-                                        
-                                        </label>
-                                </div>
+                                
                                 <div className={style.submitIdea1}>
                                     <form className={style.submitIdea2}>
                                         <button className={style.submitIdea3} type="submit">
@@ -109,14 +82,14 @@ export default function CreateIdea() {
                                 
                                 <button
                                     className={style.closeModalCreateIdea}
-                                    onClick={() => setOpenIdea(false)}
+                                    onClick={() => setOpenUpdateIdea(false)}
                                 >
                                     Cancel
                                 </button>
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
             )}
         </>
     );
