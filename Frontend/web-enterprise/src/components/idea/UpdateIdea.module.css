@@ -45,7 +45,6 @@
 }
 
 
-
 /* Avatar-name */
 .CreateIdeaContent {
   position: absolute;
@@ -95,7 +94,17 @@
   display: block;
 }
 
+.formTitle{
+  margin: -10% 0 0 47%;
+}
 
+.addTile{
+  margin: 9% 0 0 6%;
+
+  border: none;
+  outline: none;
+
+}
 
 .gach {
   width: 86%;
@@ -138,13 +147,13 @@
   border: 1px solid gray;
 }
 
-.Ccate{
+.Anonymous{
     margin: -5% 0% 0% 15%;
 }
-.add {
+.public {
   font-size: 96%;
   margin: 3% 0 0 5%;
-  font-weight: normal ;
+
 }
 
 .changeColor {   
@@ -154,14 +163,13 @@
 
 .imgChange {
   width: 24%;  
-  margin-top: -14%  ;
+  margin-top: -52%  ;
 }
 
 .footerLeftIcon {
-  margin: -10% 0 0 82%;
+  margin: -16.5% 0 0 82%;
   cursor: pointer;
 }
-
 
 
 

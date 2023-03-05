@@ -1,0 +1,22 @@
+
+.modalDeleteIdea{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    background-color:black;
+    z-index: 20; 
+}
+
+.modalContentDeleteIdea{
+    width: 550px;
+    height: 550px;
+    background-color: red;
+    margin: auto; /* can giuar */
+    position: relative;
+    z-index: 1; /*Ông nào có thuộc tính z-index cao nhất thì nằm bên trên*/
+    border-radius: 10px;
+    z-index: 10;
+}

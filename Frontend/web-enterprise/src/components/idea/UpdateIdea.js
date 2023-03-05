@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import style from "./UpdateIdea.module.css";
 
-
 export default function UpdateIdea() {
     const [openModalUpdateIdea, setOpenUpdateIdea] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
@@ -14,7 +13,7 @@ export default function UpdateIdea() {
         }
     return (
         <>
-            <a className={style.hrOpen} href="#" type="button"  onClick={() => setOpenUpdateIdea(true)}>Update Idea</a>
+            <a className={style.btnUpdateIdeaOpen} href="#" type="button"  onClick={() => setOpenUpdateIdea(true)}>Update Idea</a>
             {openModalUpdateIdea && (
                 <div className={style.modalCreateIdea}>
                     <div className={style.modalBodyCreateIdea}>
@@ -33,14 +32,16 @@ export default function UpdateIdea() {
 
                                 <div className={style.dropdownMode}>
                                     <div class={style.dropdown_content}> 
-								        <select className={style.selectCate} onChange={handleChange}> 
+                                        <select className={style.selectCate} onChange={handleChange}> 
                                             <option value="option1">Xoài</option>
                                             <option value="option2">Nhãn lồng</option>
                                             <option value="option3">Vải thiều</option>
                                         </select>
-					                </div>
-                                </div>	
-                            
+                                    </div>
+                                </div>  
+                                <div className={style.formTitle}>
+                                <input type="text" className={style.addTile} placeholder="Title"/>
+                            </div>  
                                         
                             <div className={style.gach}></div>
                         </div>
@@ -52,12 +53,12 @@ export default function UpdateIdea() {
                                 </div>
                                 <div className={style.addInfor}>
                                 <label>
-                                    <input className={style.add} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
-                                    Công khai
+                                    <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                    Public
                                 </label>
-                                <label>
-                                    <input className={style.Ccate} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
-                                    Ẩn danh
+                                <label className={style.chooseB}>
+                                    <input className={style.Anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                    Anonymous
                                 </label>
                                     <div className={style.changeColor}>
                                         <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
@@ -73,7 +74,7 @@ export default function UpdateIdea() {
                                 <div className={style.submitIdea1}>
                                     <form className={style.submitIdea2}>
                                         <button className={style.submitIdea3} type="submit">
-                                            Create Idea
+                                            Update Idea
                                         </button>
                                     </form>
                                 </div>
