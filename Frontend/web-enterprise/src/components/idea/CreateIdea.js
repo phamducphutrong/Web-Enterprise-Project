@@ -1,9 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./CreateIdea.module.css";
-
+import axios from "axios";
+import { apiUrl, USER_ID } from "../../constants/constants";
 
 export default function CreateIdea() {
+    const userId = localStorage.getItem(USER_ID)
     const [openIdea, setOpenIdea] = useState(false);
+    const [createIdeaForm, setCreateIdeaForm] = useState({
+        Title: '',
+        Description: '',
+        UserId: userId,
+        CategoryId: ''
+    });
+    const [categories, setCategories] = useState([]);
+    const [selectedCategoryId, setSelectedCategoryId] = useState('')
+
+    useEffect(() => {
+        try {
+            (async () => {
+                const response = await axios.get(`${apiUrl}/category/showAll`)
+                if (response.data.success) {
+                    console.log(response.data.categories);
+                    setCategories(response.data.categories);
+                    setSelectedCategoryId(response.data.categories[0]._id);
+                }
+            })();
+        } catch (error) {
+            console.error(error.response.data.message);
+        };
+    }, []);
+
+    const onInputChange = event => {
+        setCreateIdeaForm({ ...createIdeaForm, [event.target.name]: event.target.value });
+    }
+
+    const createIdea = (event) => {
+        event.preventDefault();
+        setOpenIdea(false);
+        (async () => {
+            try {
+                const response = await axios.post(`${apiUrl}/idea/`, createIdeaForm);
+                if (response.data.success) {
+                    console.log(response.data);
+                    setCreateIdeaForm({
+                        Title: '',
+                        Description: '',
+                        UserId: userId,
+                        CategoryId: ''
+                    })
+                }
+            } catch (error) {
+                console.log(error.response.data)
+            }
+        }
+        )();
+    }
+    const { Title, Description, CategoryId } = createIdeaForm;
 
     return (
         <>
@@ -35,7 +87,16 @@ export default function CreateIdea() {
                         <div className={style.CreateIdeaFooter}>
                             <div className={style.footerLeft}>
                                 <div className={style.inputIdea}>
-                                    <textarea rows={10} className={style.InputForm} placeholder="What's happening..."></textarea>
+
+                                    <input type='text' name='Title' placeholder="Title" onChange={onInputChange} />
+                                    <textarea rows={10} className={style.InputForm} name='Description' placeholder="Description" onChange={onInputChange}></textarea>
+                                    <select value={selectedCategoryId} name='CategoryId' onChange={onInputChange}>
+                                        {categories.map((category) => (
+                                            <option key={category._id} value={category._id}>
+                                                {category.Title}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                                 <div className={style.addInfor}>
                                     <h3 className={style.add}>Add to your posts</h3>
@@ -44,18 +105,18 @@ export default function CreateIdea() {
 
                                     </div>
                                     <div className={style.footerLeftIcon}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                             <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
                                         </svg>
                                     </div>
                                 </div>
                                 <div className={style.submitIdea1}>
-                                    <form className={style.submitIdea2}>
+                                    <div className={style.submitIdea2}>
                                         <button className={style.submitIdea3} type="submit">
                                             Create Idea
                                         </button>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <div className={style.footerRight}>
