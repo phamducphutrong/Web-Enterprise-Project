@@ -43,13 +43,13 @@ function SideBar() {
             <ul className="nav">
                 <i class='bx bx-menu' id='btn'></i>
                 <li>
-                    <a href="#">
+                    <a href="/homepage">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <span className="link_name">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/profile">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         <span className="link_name">Profile</span>
                     </a>
@@ -67,7 +67,7 @@ function SideBar() {
                     </a>
                 </li>
             </ul>
-    </div>
+        </div>
     );
 }
 

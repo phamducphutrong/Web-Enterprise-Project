@@ -85,3 +85,10 @@
     background-color: #000;
     margin: 20px 0
 }
+
+
+@media only screen and (max-width: 768px) {
+    .bx bx-menu {
+        display: none;
+    }
+}

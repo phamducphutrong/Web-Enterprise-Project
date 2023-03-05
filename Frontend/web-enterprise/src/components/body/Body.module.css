@@ -12,6 +12,13 @@
     margin-right: 10px;
 }
 
+.logoAvatarComment{
+    width: 8%;
+    height: 8%;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
 .arialLabel {
     background-color: #FAE6E6;
     border: none;
@@ -68,6 +75,7 @@
     cursor: pointer;
     height: 100%;
     padding: 15px 15px;
+    margin-bottom: 20px;
 }
 
 .cameraIconComment {
