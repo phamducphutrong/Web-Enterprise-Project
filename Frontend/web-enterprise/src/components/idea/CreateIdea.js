@@ -10,7 +10,7 @@ export default function CreateIdea() {
         Title: '',
         Description: '',
         UserId: userId,
-        CategoryId: ''
+        CategoryId: null
     });
     const [categories, setCategories] = useState([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState('')
@@ -41,12 +41,12 @@ export default function CreateIdea() {
             try {
                 const response = await axios.post(`${apiUrl}/idea/`, createIdeaForm);
                 if (response.data.success) {
-                    console.log(response.data);
+                    console.log(response.data.idea);
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
                         UserId: userId,
-                        CategoryId: ''
+                        CategoryId: null
                     })
                 }
             } catch (error) {
@@ -94,7 +94,7 @@ export default function CreateIdea() {
                             </div>
                             <div className={style.CreateIdeaName}>Phương Anh</div>
 
-                            <div className={style.dropdownMode}>
+                            {/* <div className={style.dropdownMode}>
                                 <div class={style.dropdown_content}>
                                     <select className={style.selectCate} onChange={handleChange}>
                                         <option value="option1">Xoài</option>
@@ -102,7 +102,7 @@ export default function CreateIdea() {
                                         <option value="option3">Vải thiều</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> */}
 
 
 

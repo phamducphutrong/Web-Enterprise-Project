@@ -5,15 +5,15 @@ export default function UpdateIdea() {
     const [openModalUpdateIdea, setOpenUpdateIdea] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
     const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+        setSelectedOption(event.target.value);
     };
 
     function handleChange(event) {
         const selectedOptionCate = event.target.value;
-        }
+    }
     return (
         <>
-            <a className={style.btnUpdateIdeaOpen} href="#" type="button"  onClick={() => setOpenUpdateIdea(true)}>Update Idea</a>
+            <a className={style.btnUpdateIdeaOpen} href="#" type="button" onClick={() => setOpenUpdateIdea(true)}>Update Idea</a>
             {openModalUpdateIdea && (
                 <div className={style.modalCreateIdea}>
                     <div className={style.modalBodyCreateIdea}>
@@ -30,7 +30,7 @@ export default function UpdateIdea() {
                             </div>
                             <div className={style.CreateIdeaName}>Phương Anh</div>
 
-                                <div className={style.dropdownMode}>
+                            {/* <div className={style.dropdownMode}>
                                     <div class={style.dropdown_content}> 
                                         <select className={style.selectCate} onChange={handleChange}> 
                                             <option value="option1">Xoài</option>
@@ -38,11 +38,11 @@ export default function UpdateIdea() {
                                             <option value="option3">Vải thiều</option>
                                         </select>
                                     </div>
-                                </div>  
-                                <div className={style.formTitle}>
-                                <input type="text" className={style.addTile} placeholder="Title"/>
-                            </div>  
-                                        
+                                </div>   */}
+                            <div className={style.formTitle}>
+                                <input type="text" className={style.addTile} placeholder="Title" />
+                            </div>
+
                             <div className={style.gach}></div>
                         </div>
                         {/* Cuối */}
@@ -52,14 +52,14 @@ export default function UpdateIdea() {
                                     <textarea rows={10} className={style.InputForm} placeholder="What's happening..."></textarea>
                                 </div>
                                 <div className={style.addInfor}>
-                                <label>
-                                    <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
-                                    Public
-                                </label>
-                                <label className={style.chooseB}>
-                                    <input className={style.Anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
-                                    Anonymous
-                                </label>
+                                    <label>
+                                        <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                        Public
+                                    </label>
+                                    <label className={style.chooseB}>
+                                        <input className={style.Anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                        Anonymous
+                                    </label>
                                     <div className={style.changeColor}>
                                         <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
                                     </div>
@@ -70,7 +70,7 @@ export default function UpdateIdea() {
                                         </svg>
                                     </div>
                                 </div>
-                                
+
                                 <div className={style.submitIdea1}>
                                     <form className={style.submitIdea2}>
                                         <button className={style.submitIdea3} type="submit">
@@ -80,7 +80,7 @@ export default function UpdateIdea() {
                                 </div>
                             </div>
                             <div className={style.footerRight}>
-                                
+
                                 <button
                                     className={style.closeModalCreateIdea}
                                     onClick={() => setOpenUpdateIdea(false)}
@@ -90,7 +90,7 @@ export default function UpdateIdea() {
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
             )}
         </>
     );

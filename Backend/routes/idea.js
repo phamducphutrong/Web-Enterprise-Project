@@ -83,7 +83,7 @@ router.post('/',upload.array('documents', 10), async(req, res) => {
         res.json({success: true, message: 'Successfully', idea: newIdea})
     } catch (error) {
         console.log(error)
-        res.status(500).json({success: false, message:'Internla server error'})
+        res.status(500).json({success: false, message:'Internal server error'})
     }
 })
 
@@ -248,7 +248,7 @@ router.put('/:id', async(req, res) => {
     res.json({
         success: true,
         message: 'Excellent progress!',
-        post: updatedIdea
+        idea: updatedIdea
     })
 
     } catch (error) {
@@ -272,7 +272,7 @@ router.delete('/:id', async (req, res) => {
 				message: 'Post not found or user not authorised'
 			})
 
-		res.json({ success: true, ideadeleted: deletedIdea })
+		res.json({ success: true, deletedIdea: deletedIdea })
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ success: false, message: 'Internal server error' })
@@ -397,8 +397,8 @@ router.get('/home', async (req, res) => {
 {
   $sort: { LastEdition: -1 }
 }]);
-        const category = await Category.find()
-		res.json({ success: true, ideas,category})
+        const categories = await Category.find()
+		res.json({ success: true, ideas,categories})
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ success: false, message: 'Internal server error' })
