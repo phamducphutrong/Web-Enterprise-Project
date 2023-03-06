@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import UpdateIdea from "../idea/UpdateIdea";
 import style from './Body.module.css';
 import axios from 'axios';
 import { apiUrl, USER_ID } from "../../constants/constants";
@@ -13,25 +12,25 @@ function Body() {
     const [showAddModal, setShowAddModal] = useState(false); // trạng thái của modal hiển thị form add
     const [showUpdateModal, setShowUpdateModal] = useState(false); // trạng thái của modal hiển thị form update
     const [showCommentModal, setShowCommentModal] = useState(false); // trạng thái của modal hiển thị form comment
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [ideas, setIdeas] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [createIdeaForm, setCreateIdeaForm] = useState({
+    const [showDeleteModal, setShowDeleteModal] = useState(false); // trạng thái của modal hiển thị delete confirm
+    const [ideas, setIdeas] = useState([]); // trạng thái danh sách các ideas
+    const [categories, setCategories] = useState([]); // trạng thái danh sách các categories
+    const [createIdeaForm, setCreateIdeaForm] = useState({ // trạng thái form tạo idea
         Title: '',
         Description: '',
         UserId: userId,
         CategoryId: null
     });
 
-    const [updateIdeaForm, setUpdateIdeaForm] = useState({
+    const [updateIdeaForm, setUpdateIdeaForm] = useState({ // trạng thái form cập nhật idea
         updating_id: '',
         updatingTitle: '',
         updatingDescription: ''
     });
 
-    const [deleteIdeaId, setDeleteIdeaId] = useState('');
-
-    const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+    const [deleteIdeaId, setDeleteIdeaId] = useState(''); // trạng thái lưu trữ giá trị id của idea sẽ bị xóa
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null); // này dùng để lưu trạng thái của category trong form create
+    
     useEffect(() => {
         try {
             (async () => {
