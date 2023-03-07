@@ -4,8 +4,20 @@ const argon2 = require('argon2')
 const token = require('jsonwebtoken')
 const Account = require('../models/Account')
 
+//  @route POST api/auth/getAll
+//  @desc Get all accounts
+//  @access Private 
+router.get('/listAccount',async(req,res)=>{
+    const accounts = await Account.find({}, { Username: 1, Role: 1 });
+    if (!accounts)
+			return res.status(401).json({
+				success: false,
+				message: 'Not any account'
+			})
+    res.json({success:true,accounts})
+})
 
-//  @route POST api/auth/createA
+//  @route POST api/auth/create
 //  @desc Create Account
 //  @access Private 
 router.post('/create', async(req,res)=> {
@@ -18,8 +30,8 @@ router.post('/create', async(req,res)=> {
         const hashPassword = await argon2.hash(Password)
         const newAccount = new Account({Username, Password: hashPassword, Role})
         await newAccount.save()
-        const accessToken = token.sign({userId: newAccount._id},process.env.ACCESS_TOKEN_SECRET)
-        return res.json({success:true,message:'Successful',accessToken})
+        const accessToken = token.sign({accountId: newAccount._id},process.env.ACCESS_TOKEN_SECRET)
+        return res.json({success:true,message:'Successful',accessToken, newAccount})
     }
     catch(error)
     {
@@ -31,7 +43,6 @@ router.post('/create', async(req,res)=> {
 //  @route POST api/auth/login
 //  @desc Login
 //  @access Public
-
 router.post('/login',async(req,res)=>{
 
     const {Username,Password} = req.body
@@ -52,7 +63,7 @@ router.post('/login',async(req,res)=>{
         ({Role, _id} = userValid)
         const accessToken = token.sign(
 			{
-                userId: userValid._id, 
+                accountId: userValid._id, 
                 exp: Math.floor(Date.now() / 1000) + (30 * 24 * 60 * 60),
                 },
 			process.env.ACCESS_TOKEN_SECRET
@@ -61,7 +72,7 @@ router.post('/login',async(req,res)=>{
             success: true,
             message: "Logged in successfully",
             accessToken,
-            userId: _id,
+            accountId: _id,
             Role
         })
     }
@@ -74,8 +85,7 @@ router.post('/login',async(req,res)=>{
 
 //  @route POST api/auth/delete
 //  @desc delete
-//  @access Public
-
+//  @access Private
 router.delete('/:id', async (req, res) => {
 	try {
 		const accountDeleteCondition = { _id: req.params.id }

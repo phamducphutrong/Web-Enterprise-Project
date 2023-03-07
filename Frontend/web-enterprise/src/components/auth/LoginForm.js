@@ -26,7 +26,7 @@ const LoginForm = () => {
       if (response.data.success) {
         console.log(response.data);
         localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken);
-        localStorage.setItem(USER_ID, response.data.userId);
+        localStorage.setItem(USER_ID, response.data.accountId);
         localStorage.setItem(ROLE, response.data.Role);
         const role = response.data.Role
         if (role === 'Staff')
