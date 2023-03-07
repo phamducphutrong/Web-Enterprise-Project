@@ -1,4 +1,4 @@
-.line {
+ .line {
     width: 100%;
     height: 1px;
     background-color: #bcb9b9;
@@ -345,10 +345,17 @@
   display: block;
 }
 
+.formTitle{
+  margin: -10% 0 0 47%;
+}
 
+.addTile{
+  margin: 9% 0 0 6%;
+  border: none;
+  outline: none;
+}
 .gach {
   width: 86%;
-  height: 1%;
   margin: 9% 0 0 6%;
   background-color: gray;
 }
@@ -388,14 +395,15 @@
   border: 1px solid gray;
 }
 
-.Ccate{
-    margin-left: 11%;
-}
-.add {
-  font-size: 96%;
-  margin: 3% 0 0 5%;
-  font-weight: normal ;
-}
+.lbPublic{ 
+  margin: 2% 0% 0% 3%;
+  display: inline-block;
+  }
+
+  .lbAno{ 
+    margin-left: 12%;
+    }
+  
 
 .changeColor {   
   margin: -4% 0 0 60%;
@@ -404,11 +412,11 @@
 
 .imgChange {
   width: 24%;  
-  margin-top: -6%  ;
+  margin-top: -14%  ;
 }
 
 .footerLeftIcon {
-  margin: -9% 0 0 82%;
+  margin: -8% 0 0 82%;
   cursor: pointer;
 }
 
@@ -419,14 +427,10 @@
   
   }
 
-.text{
-  display: inline-block;
-  margin: 1% 0% 0% 2%;
-}
 
 .submitIdea1 {
   height: 15%;
-  margin-top: 9%;
+  margin-top: 7%;
 }
 
 .submitIdea2 {

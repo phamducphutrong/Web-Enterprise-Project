@@ -214,6 +214,7 @@ function Body() {
                 }
             </ul>
 
+{/* Tạo idea */}
             {showAddModal && (
                 <div className={style.modalCreateIdea}>
                     <div className={style.modalBodyCreateIdea}>
@@ -225,10 +226,25 @@ function Body() {
                         </div>
                         {/* Thân */}
                         <div className={style.CreateIdeaContent}>
-                            <div className={style.CreateIdeaContentTop}>
-                                <img src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" className={style.CreateIdeaAvt} />
-                                <div className={style.CreateIdeaName}>Phương Anh</div>
+                            <div className={style.CreateIdeaAvt} >
+                                <img className={style.avtIdea} src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" />                                
                             </div>
+                            <div className={style.CreateIdeaName}>Phương Anh</div>
+                            <div className={style.dropdownMode}>
+                                <div class={style.dropdown_content}>                        
+                                    <select className={style.selectCate} value={selectedCategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
+                                            {categories.map((category, index) => (
+                                                <option key={index} value={category._id}>
+                                                    {category.Title}
+                                                </option>
+                                            ))}
+                                        </select>
+                                </div>
+                            </div>
+                            <div className={style.formTitle}>    
+                                <input type='text' className={style.addTile} name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} /> 
+                            </div> 
+
                             <hr className={style.gach}></hr>
                         </div>
                         {/* Cuối */}
@@ -236,24 +252,24 @@ function Body() {
                             <div className={style.CreateIdeaFooter}>
                                 <div className={style.footerLeft}>
                                     <div className={style.inputIdea}>
-                                        <input type='text' name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} />
+                                        {/* <input type='text' name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} /> */}
                                         <textarea rows={10} className={style.InputForm} name='Description' placeholder="Description" onChange={onChangeCreateIdeaForm}></textarea>
-                                        <select value={selectedCategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
+                                        {/* <select value={selectedCategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
                                             {categories.map((category, index) => (
                                                 <option key={index} value={category._id}>
                                                     {category.Title}
                                                 </option>
                                             ))}
-                                        </select>
+                                        </select> */}
                                     </div>
                                     <div className={style.addInfor}>
-                                        <label>
-                                            <input className={style.add} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
-                                            Công khai
+                                        <label className={style.lbPublic}>
+                                            <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                            Public
                                         </label>
-                                        <label>
-                                            <input className={style.Ccate} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
-                                            Ẩn danh
+                                        <label className={style.lbAno}>
+                                            <input className={style.anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                            Anonymous
                                         </label>
                                         {/* {selectedOption === 'A' ? <p>Option A is selected</p> : <p>Option B is selected</p>} */}
 
@@ -274,11 +290,8 @@ function Body() {
                                                 type="checkbox"
                                                 checked={isChecked}
                                                 onChange={handleCheckboxChange}
-                                            />
-                                            <div className={style.text}>
-                                                I agree to Terms and Conditions
-                                            </div>
-
+                                            /> I agree to Terms and Conditions
+                                            
                                         </label>
                                     </div>
                                     <div className={style.submitIdea1}>
