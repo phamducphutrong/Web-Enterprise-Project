@@ -29,7 +29,6 @@ function Body() {
     });
 
     const [deleteIdeaId, setDeleteIdeaId] = useState(''); // trạng thái lưu trữ giá trị id của idea sẽ bị xóa
-    const [selectedCategoryId, setSelectedCategoryId] = useState(null); // này dùng để lưu trạng thái của category trong form create
     
     useEffect(() => {
         try {
@@ -39,7 +38,6 @@ function Body() {
                     console.log(response.data);
                     setIdeas(response.data.ideas);
                     setCategories(response.data.categories);
-                    setSelectedCategoryId(response.data.categories[0]._id);
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
@@ -231,8 +229,8 @@ function Body() {
                             </div>
                             <div className={style.CreateIdeaName}>Phương Anh</div>
                             <div className={style.dropdownMode}>
-                                <div class={style.dropdown_content}>                        
-                                    <select className={style.selectCate} value={selectedCategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
+                                <div class={style.dropdown_content}>                     
+                                    <select className={style.selectCate} value={createIdeaForm.CategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
                                             {categories.map((category, index) => (
                                                 <option key={index} value={category._id}>
                                                     {category.Title}
