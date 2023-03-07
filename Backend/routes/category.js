@@ -36,19 +36,6 @@ router.post('/newCategory', async (req, res) => {
 	}
 })
 
-// router.get('/update/:id', async (req, res) => {
-// 	try {
-// 		const id = req.params.id
-// 		const validId = await Category.findOne({ id })
-// 		if (!validId) return res.status(400).json({ success: false, message: "Not found this category" })
-// 		else return res.json({ success: true, validId })
-// 	}
-// 	catch (error) {
-// 		console.log(error.message)
-// 		res.status(500).json({ success: false, message: 'Internal server error' })
-// 	}
-// })
-
 //api to update
 router.put('/update/:id', async (req, res) => {
 	const { Title, Description, Status } = req.body

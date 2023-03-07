@@ -27,7 +27,9 @@ const UserSchema = new Schema({
         unique: true
     },
     Department: {
-        type: String
+        type: String,
+        required:true,
+        enum: ['IT', 'Marketing', 'Sale', 'HR']
     },
     Avatar: {
         type: String

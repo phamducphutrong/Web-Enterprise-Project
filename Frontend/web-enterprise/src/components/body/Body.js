@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import style from './Body.module.css';
 import axios from 'axios';
-import { apiUrl, USER_ID } from "../../constants/constants";
+import { apiUrl, ACCOUNT_ID } from "../../constants/constants";
 
 Modal.setAppElement("#root");
 
 function Body() {
-    const userId = localStorage.getItem(USER_ID) // lấy id của người dùng (userId)
+    const accountId = localStorage.getItem(ACCOUNT_ID) // lấy id của tài khoản (accountId)
     const [showActionsModal, setShowActionsModal] = useState(false); // trạng thái của modal hiển thị các hành động (update, delete, download CSV)
     const [showAddModal, setShowAddModal] = useState(false); // trạng thái của modal hiển thị form add
     const [showUpdateModal, setShowUpdateModal] = useState(false); // trạng thái của modal hiển thị form update
@@ -18,7 +18,7 @@ function Body() {
     const [createIdeaForm, setCreateIdeaForm] = useState({ // trạng thái form tạo idea
         Title: '',
         Description: '',
-        UserId: userId,
+        UserId: accountId,
         CategoryId: null
     });
 
@@ -41,7 +41,7 @@ function Body() {
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
-                        UserId: userId,
+                        UserId: accountId,
                         CategoryId: response.data.categories[0]._id
                     });
                 }
@@ -70,7 +70,7 @@ function Body() {
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
-                        UserId: userId,
+                        UserId: accountId,
                         CategoryId: null
                     });
                     setIdeas([...ideas, response.data.idea]);

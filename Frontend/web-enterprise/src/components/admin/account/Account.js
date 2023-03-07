@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { apiUrl } from "../../constants/constants";
+import { apiUrl } from "../../../constants/constants";
 
 const Account = () => {
     const Roles = ['QAM', 'QAC', 'Staff'];

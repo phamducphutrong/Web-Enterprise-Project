@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import style from "./CreateIdea.module.css";
 import axios from "axios";
-import { apiUrl, USER_ID } from "../../constants/constants";
+import { apiUrl, ACCOUNT_ID } from "../../constants/constants";
 
 export default function CreateIdea() {
-    const userId = localStorage.getItem(USER_ID)
+    const accountId = localStorage.getItem(ACCOUNT_ID)
     const [openIdea, setOpenIdea] = useState(false);
     const [createIdeaForm, setCreateIdeaForm] = useState({
         Title: '',
         Description: '',
-        UserId: userId,
+        UserId: accountId,
         CategoryId: ''
     });
     const [categories, setCategories] = useState([]);
@@ -45,7 +45,7 @@ export default function CreateIdea() {
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
-                        UserId: userId,
+                        UserId: accountId,
                         CategoryId: ''
                     })
                 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { apiUrl, LOCAL_STORAGE_TOKEN_NAME, USER_ID, ROLE } from "../../constants/constants";
+import { apiUrl, LOCAL_STORAGE_TOKEN_NAME, ACCOUNT_ID, ROLE, PROFILE_INFORMATION } from "../../constants/constants";
 import style from './LoginForm.module.css'
 
 const LoginForm = () => {
@@ -26,13 +26,16 @@ const LoginForm = () => {
       if (response.data.success) {
         console.log(response.data);
         localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken);
-        localStorage.setItem(USER_ID, response.data.accountId);
+        localStorage.setItem(ACCOUNT_ID, response.data.accountId);
         localStorage.setItem(ROLE, response.data.Role);
+        localStorage.setItem(PROFILE_INFORMATION, JSON.stringify(response.data.user));
         const role = response.data.Role
         if (role === 'Staff')
           navigate("/homepage");
         else if (role === 'QAM')
           navigate("/category");
+        else if (role === 'Administrator')
+          navigate('/account');
       }
     } catch (error) {
       console.error(error.response.data.message);

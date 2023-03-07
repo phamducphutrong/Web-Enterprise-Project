@@ -11,6 +11,11 @@ const IdeaSchema = new Schema({
     LastEdition: {
         type: Date
     },
+    AcademicYear: {
+        type: String,
+        ref: 'Academic',
+        select: 'Year'
+    },
     UserId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -19,11 +24,6 @@ const IdeaSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    AcademicYear: {
-        type: String,
-        ref: 'Academic',
-        select: 'Year'
-    }
 })
 
 module.exports = mongoose.model('Idea',IdeaSchema)

@@ -4,7 +4,7 @@ import Homepage from './components/homepage/Homepage';
 import Category from './components/category/Category';
 import CreateIdea from "./components/idea/CreateIdea";
 import Profile from './components/profile/Profile';
-import Account from "./components/account/Account";
+import Account from "./components/admin/account/Account";
 function App() {
   return (
     <Router>
