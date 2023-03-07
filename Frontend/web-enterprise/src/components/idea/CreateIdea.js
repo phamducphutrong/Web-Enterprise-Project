@@ -155,7 +155,7 @@ export default function CreateIdea() {
                                                 checked={isChecked}
                                                 onChange={handleCheckboxChange}
                                             />  I agree to Terms and Conditions
-                                           
+        
 
                                         </label>
                                     </div>
