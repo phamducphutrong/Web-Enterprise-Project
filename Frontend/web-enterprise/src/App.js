@@ -3,7 +3,8 @@ import LoginForm from './components/auth/LoginForm';
 import Homepage from './components/homepage/Homepage';
 import Category from './components/category/Category';
 import CreateIdea from "./components/idea/CreateIdea";
-import Profile from './components/profile/Profile'
+import Profile from './components/profile/Profile';
+import Account from "./components/account/Account";
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="/createIdea" element={<CreateIdea />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </Router>
   );

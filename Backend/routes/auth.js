@@ -11,7 +11,7 @@ const Account = require('../models/Account')
 router.post('/create', async(req,res)=> {
     const {Username, Password,Role} = req.body
 
-    if(!Username || !Password)return res.status(400).json({sucsess:false,message:'Please enter full information'})
+    if(!Username || !Password || !Role)return res.status(400).json({sucsess:false,message:'Please enter full information'})
     try{
         const user = await Account.findOne({ Username })
         if(user) return res.status(400).json({sucsess:false,message:'Username is exitsted'})
