@@ -93,6 +93,15 @@
   display: block;
 }
 
+.formTitle{
+  margin: -10% 0 0 47%;
+}
+
+.addTile{
+  margin: 9% 0 0 6%;
+  border: none;
+  outline: none;
+}
 
 .gach {
   width: 86%;
@@ -132,16 +141,24 @@
   height: 15%;
   margin: -26% 0 0 7%;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid gray; 
 }
 
-.Ccate{
-    margin-left: 11%;
+
+.lbPublic{ 
+  margin: 2% 0% 0% 4%;
+  display: inline-block;
+  }
+
+label.anonymous{
+  
+   
 }
-.add {
+label.public {
   font-size: 96%;
-  margin: 3% 0 0 5%;
+  margin: 9% 0 0 5%;
   font-weight: normal ;
+ 
 }
 
 .changeColor {   
@@ -151,11 +168,11 @@
 
 .imgChange {
   width: 24%;  
-  margin-top: -6%  ;
+  margin-top: -7%  ;
 }
 
 .footerLeftIcon {
-  margin: -9% 0 0 82%;
+  margin: -8% 0 0 82%;
   cursor: pointer;
 }
 
@@ -163,17 +180,13 @@
     font-size: 96%;
     padding: 3.5%;
     margin-left: 4%;
-  
+    display: inline-block;  
   }
 
-.text{
-  display: inline-block;
-  margin: 1% 0% 0% 2%;
-}
 
 .submitIdea1 {
   height: 15%;
-  margin-top: 9%;
+  margin-top: 7%;
 }
 
 .submitIdea2 {
@@ -195,7 +208,7 @@
 }
 
 .footerRight {
-  margin:-11% 0% 0% 78%;;
+  margin:-10.5% 0% 0% 78%;;
   width: 0%;
 }
 

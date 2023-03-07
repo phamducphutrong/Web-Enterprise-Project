@@ -97,13 +97,15 @@ export default function CreateIdea() {
                             <div className={style.dropdownMode}>
                                 <div class={style.dropdown_content}>
                                     <select className={style.selectCate} onChange={handleChange}>
-                                        <option value="option1">Xoài</option>
-                                        <option value="option2">Nhãn lồng</option>
-                                        <option value="option3">Vải thiều</option>
+                                        <option value="option1">1</option>
+                                        <option value="option2">2</option>
+                                        <option value="option3">3</option>
                                     </select>
                                 </div>
                             </div>
-
+                            <div className={style.formTitle}>                             
+                                <input type='text' className={style.addTile} name='Title' placeholder="Title" onChange={onInputChange} />
+                                </div> 
 
 
                             <div className={style.gach}></div>
@@ -114,8 +116,8 @@ export default function CreateIdea() {
                                 <div className={style.footerLeft}>
                                     <div className={style.inputIdea}>
 
-                                        <input type='text' name='Title' placeholder="Title" onChange={onInputChange} />
-                                        <textarea rows={10} className={style.InputForm} name='Description' placeholder="Description" onChange={onInputChange}></textarea>
+                                        {/* <input type='text' name='Title' placeholder="Title" onChange={onInputChange} /> */}
+                                        <textarea rows={10} className={style.InputForm} name='Description' placeholder="What is happening..." onChange={onInputChange}></textarea>
                                         <select value={selectedCategoryId} name='CategoryId' onChange={onInputChange}>
                                             {categories.map((category) => (
                                                 <option key={category._id} value={category._id}>
@@ -125,13 +127,13 @@ export default function CreateIdea() {
                                         </select>
                                     </div>
                                     <div className={style.addInfor}>
-                                        <label>
-                                            <input className={style.add} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
-                                            Công khai
+                                        <label className={style.lbPublic}>
+                                            <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                            Public
                                         </label>
-                                        <label>
-                                            <input className={style.Ccate} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
-                                            Ẩn danh
+                                        <label className={style.lbPublic}>
+                                            <input className={style.anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                            Anonymous
                                         </label>
                                         {/* {selectedOption === 'A' ? <p>Option A is selected</p> : <p>Option B is selected</p>} */}
 
@@ -152,10 +154,8 @@ export default function CreateIdea() {
                                                 type="checkbox"
                                                 checked={isChecked}
                                                 onChange={handleCheckboxChange}
-                                            />
-                                            <div className={style.text}>
-                                                I agree to Terms and Conditions
-                                            </div>
+                                            />  I agree to Terms and Conditions
+                                           
 
                                         </label>
                                     </div>

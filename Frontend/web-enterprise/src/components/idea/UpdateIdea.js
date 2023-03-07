@@ -41,7 +41,7 @@ export default function UpdateIdea() {
                                 </div>  
                                 <div className={style.formTitle}>
                                 <input type="text" className={style.addTile} placeholder="Title"/>
-                            </div>  
+                                </div>  
                                         
                             <div className={style.gach}></div>
                         </div>
