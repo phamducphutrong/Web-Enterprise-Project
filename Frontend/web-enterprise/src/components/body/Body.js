@@ -176,9 +176,9 @@ function Body() {
                                         <Modal className={style.modalComment} isOpen={showActionsModal} onRequestClose={() => setShowActionsModal(false)}>
                                             <button onClick={() => setShowUpdateModal(true)}>Update Idea</button>
                                             <button onClick={() => setShowDeleteModal(true)}>Delete</button>
-                                            <a href="#">Download .CSV</a>
+                                            <button>Download .CSV</button>
                                             <div className={style.modalDiv}>
-                                                <button onClick={() => setShowActionsModal(false)} className={style.closeComment}><i class="fa fa-close"></i></button>
+                                                <button onClick={() => setShowActionsModal(false)} className={style.closeComment}><i className="fa fa-close"></i></button>
                                             </div>
                                         </Modal>
                                     </div>
@@ -188,16 +188,16 @@ function Body() {
                                 <div className={style.line}></div>
                                 <div className={style.likeDislikeComment}>
                                     <div className={style.interactionButtons}>
-                                        <button className={style.like}><i class="fa fa-thumbs-up"></i></button>
-                                        <button className={style.dislike}><i class="fa fa-thumbs-down"></i></button>
-                                        <button type="button" className={style.comment} onClick={() => setShowCommentModal(true)}><i class="fa fa-comment"></i></button>
+                                        <button className={style.like}><i className="fa fa-thumbs-up"></i></button>
+                                        <button className={style.dislike}><i className="fa fa-thumbs-down"></i></button>
+                                        <button type="button" className={style.comment} onClick={() => setShowCommentModal(true)}><i className="fa fa-comment"></i></button>
                                         <Modal className={style.modalComment} isOpen={showCommentModal} onRequestClose={() => setShowCommentModal(false)}>
                                             <div className={style.modalDiv}>
                                                 <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logoAvatarComment} />
                                                 <input className={style.inputModalComment} type="text" name="comment" placeholder="Comment here" />
-                                                <button className={style.like}><i class="fa fa-thumbs-up"></i></button>
-                                                <button className={style.dislike}><i class="fa fa-thumbs-down"></i></button>
-                                                <button onClick={() => setShowCommentModal(false)} className={style.closeComment}><i class="fa fa-close"></i></button>
+                                                <button className={style.like}><i className="fa fa-thumbs-up"></i></button>
+                                                <button className={style.dislike}><i className="fa fa-thumbs-down"></i></button>
+                                                <button onClick={() => setShowCommentModal(false)} className={style.closeComment}><i className="fa fa-close"></i></button>
                                             </div>
                                         </Modal>
                                     </div>

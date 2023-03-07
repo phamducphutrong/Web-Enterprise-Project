@@ -40,11 +40,11 @@ const Header = () => {
 				<div className={style.searchContainer}>
 					<input type="text" placeholder="Search" />
 				</div>
-				<div class={style.dropdown}>
-					<div class={style.dropdownToggle}>
-						<img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97 " alt="avatar" class={style.avatar} />
-						<i class="fa fa-caret-down">
-							<div class={style.dropdownMenu}>
+				<div className={style.dropdown}>
+					<div className={style.dropdownToggle}>
+						<img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97 " alt="avatar" className={style.avatar} />
+						<i className="fa fa-caret-down">
+							<div className={style.dropdownMenu}>
 								<a href="/profile">Profile</a>
 								<a href="#">Settings</a>
 								<a href="#">Download file CSV</a>

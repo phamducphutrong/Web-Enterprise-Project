@@ -41,28 +41,28 @@ function SideBar() {
 
         <div className={`sidebar `}>
             <ul className="nav">
-                <i class='bx bx-menu' id='btn'></i>
+                <i className='bx bx-menu' id='btn'></i>
                 <li>
                     <a href="/homepage">
-                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <i className="fa fa-home" aria-hidden="true"></i>
                         <span className="link_name">Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="/profile">
-                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <i className="fa fa-user-circle-o" aria-hidden="true"></i>
                         <span className="link_name">Profile</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-comment" aria-hidden="true"></i>
+                        <i className="fa fa-comment" aria-hidden="true"></i>
                         <span className="link_name">Comment</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                        <i className="fa fa-lightbulb-o" aria-hidden="true"></i>
                         <span className="link_name">Idea</span>
                     </a>
                 </li>
