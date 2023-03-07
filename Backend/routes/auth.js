@@ -11,15 +11,15 @@ const Account = require('../models/Account')
 router.post('/create', async(req,res)=> {
     const {Username, Password,Role} = req.body
 
-    if(!Username || !Password || !Role)return res.status(400).json({sucsess:false,message:'Please enter full information'})
-    try{
+    if(!Username || !Password || !Role)return res.status(400).json({success:false,message:'Please enter full information'})
+    try{ 
         const user = await Account.findOne({ Username })
-        if(user) return res.status(400).json({sucsess:false,message:'Username is exitsted'})
+        if(user) return res.status(400).json({success:false,message:'Username is exitsted'})
         const hashPassword = await argon2.hash(Password)
         const newAccount = new Account({Username, Password: hashPassword, Role})
         await newAccount.save()
         const accessToken = token.sign({userId: newAccount._id},process.env.ACCESS_TOKEN_SECRET)
-        return res.json({sucsess:true,message:'Successful',accessToken})
+        return res.json({success:true,message:'Successful',accessToken})
     }
     catch(error)
     {
@@ -72,5 +72,26 @@ router.post('/login',async(req,res)=>{
     }
 })
 
+//  @route POST api/auth/delete
+//  @desc delete
+//  @access Public
+
+router.delete('/:id', async (req, res) => {
+	try {
+		const accountDeleteCondition = { _id: req.params.id }
+		const deletedAccount = await Account.findOneAndDelete(accountDeleteCondition)
+
+		if (!deletedAccount)
+			return res.status(401).json({
+				success: false,
+				message: 'Account not found or user not authorised'
+			})
+
+		res.json({ success: true, deletedAccount: deletedAccount })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+	}
+})
 
 module.exports = router

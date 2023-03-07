@@ -66,7 +66,8 @@ router.post('/',upload.array('documents', 10), async(req, res) => {
             Description, 
             LastEdition: now, 
             UserId: UserId,
-            CategoryId: CategoryId
+            CategoryId: CategoryId,
+            AcademicYear: currentYear
         })
 
         const IdeaId = await newIdea.save()

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LOCAL_STORAGE_TOKEN_NAME, USER_ID } from '../../constants/constants'
+import { LOCAL_STORAGE_TOKEN_NAME, USER_ID, ROLE } from '../../constants/constants'
 import style from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +17,7 @@ const Header = () => {
 		event.preventDefault();
 		localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
 		localStorage.removeItem(USER_ID);
+		localStorage.removeItem(ROLE);
 		navigate('/');
 	}
 

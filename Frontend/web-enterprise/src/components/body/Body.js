@@ -29,7 +29,7 @@ function Body() {
     });
 
     const [deleteIdeaId, setDeleteIdeaId] = useState(''); // trạng thái lưu trữ giá trị id của idea sẽ bị xóa
-    
+
     useEffect(() => {
         try {
             (async () => {
@@ -163,11 +163,11 @@ function Body() {
                                     <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-1/279124471_1370043140139558_7697343296375162295_n.jpg?stp=dst-jpg_p240x240&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D_tMB3tY9XAAX8hHXTj&tn=SLNvUmKXwpYJVKz6&_nc_ht=scontent.fhan5-9.fna&oh=00_AfAPLiyfjTk7RoIjs2FKkFIcx3ptGIuFYHF-MXtHNODAVw&oe=63F7EB97" alt="avatar" className={style.logoAvatar} />
                                     <div className={style.nameDateDot}>
                                         <div className={style.nameDate}>
-                                            {idea.userPost.map((user, index) => (
-                                                <div key={index}>
+                                            {idea.userPost.map((user, index) => {
+                                                return (<div key={index}>
                                                     <p>{user.Name}</p>
-                                                </div>
-                                            ))}
+                                                </div>)
+                                            })}
                                             <div className={style.dateDisplay}>1 hour ago</div>
                                         </div>
                                         <div className={style.dot}><h1 type="button" onClick={() => showActionsModalAndGetCurrentIdea(idea)}>...</h1></div>
@@ -212,176 +212,182 @@ function Body() {
                 }
             </ul>
 
-{/* Tạo idea */}
-            {showAddModal && (
-                <div className={style.modalCreateIdea}>
-                    <div className={style.modalBodyCreateIdea}>
-                        <div className={style.modalInnerCreateIdea}>
-                            {/* đầu */}
-                            <div className={style.CreateIdeaHeader}>
-                                <h1 className={style.CreateIdea}>Create Idea </h1>
+            {/* Tạo idea */}
+            {
+                showAddModal && (
+                    <div className={style.modalCreateIdea}>
+                        <div className={style.modalBodyCreateIdea}>
+                            <div className={style.modalInnerCreateIdea}>
+                                {/* đầu */}
+                                <div className={style.CreateIdeaHeader}>
+                                    <h1 className={style.CreateIdea}>Create Idea </h1>
+                                </div>
                             </div>
-                        </div>
-                        {/* Thân */}
-                        <div className={style.CreateIdeaContent}>
-                            <div className={style.CreateIdeaAvt} >
-                                <img className={style.avtIdea} src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" />                                
-                            </div>
-                            <div className={style.CreateIdeaName}>Phương Anh</div>
-                            <div className={style.dropdownMode}>
-                                <div class={style.dropdown_content}>                     
-                                    <select className={style.selectCate} value={createIdeaForm.CategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
+                            {/* Thân */}
+                            <div className={style.CreateIdeaContent}>
+                                <div className={style.CreateIdeaAvt} >
+                                    <img className={style.avtIdea} src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" />
+                                </div>
+                                <div className={style.CreateIdeaName}>Phương Anh</div>
+                                <div className={style.dropdownMode}>
+                                    <div class={style.dropdown_content}>
+                                        <select className={style.selectCate} value={createIdeaForm.CategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
                                             {categories.map((category, index) => (
                                                 <option key={index} value={category._id}>
                                                     {category.Title}
                                                 </option>
                                             ))}
                                         </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={style.formTitle}>    
-                                <input type='text' className={style.addTile} name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} /> 
-                            </div> 
+                                <div className={style.formTitle}>
+                                    <input type='text' className={style.addTile} name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} />
+                                </div>
 
-                            <hr className={style.gach}></hr>
-                        </div>
-                        {/* Cuối */}
-                        <form onSubmit={createIdea}>
-                            <div className={style.CreateIdeaFooter}>
-                                <div className={style.footerLeft}>
-                                    <div className={style.inputIdea}>
-                                        {/* <input type='text' name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} /> */}
-                                        <textarea rows={10} className={style.InputForm} name='Description' placeholder="Description" onChange={onChangeCreateIdeaForm}></textarea>
-                                        {/* <select value={selectedCategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
+                                <hr className={style.gach}></hr>
+                            </div>
+                            {/* Cuối */}
+                            <form onSubmit={createIdea}>
+                                <div className={style.CreateIdeaFooter}>
+                                    <div className={style.footerLeft}>
+                                        <div className={style.inputIdea}>
+                                            {/* <input type='text' name='Title' placeholder="Title" onChange={onChangeCreateIdeaForm} /> */}
+                                            <textarea rows={10} className={style.InputForm} name='Description' placeholder="Description" onChange={onChangeCreateIdeaForm}></textarea>
+                                            {/* <select value={selectedCategoryId} name='CategoryId' onChange={onChangeCreateIdeaForm}>
                                             {categories.map((category, index) => (
                                                 <option key={index} value={category._id}>
                                                     {category.Title}
                                                 </option>
                                             ))}
                                         </select> */}
-                                    </div>
-                                    <div className={style.addInfor}>
-                                        <label className={style.lbPublic}>
-                                            <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
-                                            Public
-                                        </label>
-                                        <label className={style.lbAno}>
-                                            <input className={style.anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
-                                            Anonymous
-                                        </label>
-                                        {/* {selectedOption === 'A' ? <p>Option A is selected</p> : <p>Option B is selected</p>} */}
+                                        </div>
+                                        <div className={style.addInfor}>
+                                            <label className={style.lbPublic}>
+                                                <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                                Public
+                                            </label>
+                                            <label className={style.lbAno}>
+                                                <input className={style.anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                                Anonymous
+                                            </label>
+                                            {/* {selectedOption === 'A' ? <p>Option A is selected</p> : <p>Option B is selected</p>} */}
 
 
-                                        <div className={style.changeColor}>
-                                            <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
+                                            <div className={style.changeColor}>
+                                                <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
+                                            </div>
+                                            <div className={style.footerLeftIcon}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+                                                </svg>
+                                            </div>
                                         </div>
-                                        <div className={style.footerLeftIcon}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
-                                            </svg>
+                                        <div className={style.condition}>
+                                            <label className={style.agreeCondition}>
+                                                <input className={style.agreeCon}
+                                                    type="checkbox"
+                                                    checked={isChecked}
+                                                    onChange={handleCheckboxChange}
+                                                /> I agree to Terms and Conditions
+
+                                            </label>
+                                        </div>
+                                        <div className={style.submitIdea1}>
+                                            <div className={style.submitIdea2}>
+                                                <button className={style.submitIdea3} type="submit">
+                                                    Create Idea
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className={style.condition}>
-                                        <label className={style.agreeCondition}>
-                                            <input className={style.agreeCon}
-                                                type="checkbox"
-                                                checked={isChecked}
-                                                onChange={handleCheckboxChange}
-                                            /> I agree to Terms and Conditions
-                                            
-                                        </label>
-                                    </div>
-                                    <div className={style.submitIdea1}>
-                                        <div className={style.submitIdea2}>
-                                            <button className={style.submitIdea3} type="submit">
-                                                Create Idea
-                                            </button>
-                                        </div>
+                                    <div className={style.footerRight}>
+                                        <button className={style.closeModalCreateIdea} onClick={() => setShowAddModal(false)}>Cancel</button>
                                     </div>
                                 </div>
-                                <div className={style.footerRight}>
-                                    <button className={style.closeModalCreateIdea} onClick={() => setShowAddModal(false)}>Cancel</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-
-            {showUpdateModal && (
-                <div className={style.modalCreateIdea}>
-                    <div className={style.modalBodyCreateIdea}>
-                        <div className={style.modalInnerCreateIdea}>
-                            {/* đầu */}
-                            <div className={style.CreateIdeaHeader}>
-                                <h1 className={style.CreateIdea}>Update Idea </h1>
-                            </div>
+                            </form>
                         </div>
-                        {/* Thân */}
-                        <div className={style.CreateIdeaContent}>
-                            <div className={style.CreateIdeaAvt}>
-                                <img src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" className={style.avtIdea} />
+                    </div>
+                )
+            }
+
+            {
+                showUpdateModal && (
+                    <div className={style.modalCreateIdea}>
+                        <div className={style.modalBodyCreateIdea}>
+                            <div className={style.modalInnerCreateIdea}>
+                                {/* đầu */}
+                                <div className={style.CreateIdeaHeader}>
+                                    <h1 className={style.CreateIdea}>Update Idea </h1>
+                                </div>
                             </div>
-                            <div className={style.CreateIdeaName}>Phương Anh</div>
-                            <div className={style.gach}></div>
+                            {/* Thân */}
+                            <div className={style.CreateIdeaContent}>
+                                <div className={style.CreateIdeaAvt}>
+                                    <img src="https://th.bing.com/th/id/OIP.4xZbB1ML4raovv9lcrnXTQHaEK?w=311&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" className={style.avtIdea} />
+                                </div>
+                                <div className={style.CreateIdeaName}>Phương Anh</div>
+                                <div className={style.gach}></div>
+                            </div>
+                            {/* Cuối */}
+                            <form onSubmit={updateIdea}>
+                                <div className={style.CreateIdeaFooter}>
+                                    <div className={style.footerLeft}>
+                                        <input type='hidden' name="updating_id" value={updateIdeaForm.updating_id} />
+                                        <div className={style.formTitle}>
+                                            <input type="text" className={style.addTile} name="updatingTitle" value={updateIdeaForm.updatingTitle} onChange={onChangeUpdateIdeaForm} />
+                                        </div>
+                                        <div className={style.inputIdea}>
+                                            <textarea rows={10} className={style.InputForm} name="updatingDescription" value={updateIdeaForm.updatingDescription} onChange={onChangeUpdateIdeaForm}></textarea>
+                                        </div>
+                                        <div className={style.addInfor}>
+                                            <label>
+                                                <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
+                                                Public
+                                            </label>
+                                            <label className={style.chooseB}>
+                                                <input className={style.Anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
+                                                Anonymous
+                                            </label>
+                                            <div className={style.changeColor}>
+                                                <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
+                                            </div>
+                                            <div className={style.footerLeftIcon}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div className={style.submitIdea1}>
+                                            <div className={style.submitIdea2}>
+                                                <button className={style.submitIdea3} type="submit">Update Idea</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={style.footerRight}>
+                                        <button className={style.closeModalCreateIdea} onClick={() => setShowUpdateModal(false)}>Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        {/* Cuối */}
-                        <form onSubmit={updateIdea}>
-                            <div className={style.CreateIdeaFooter}>
-                                <div className={style.footerLeft}>
-                                    <input type='hidden' name="updating_id" value={updateIdeaForm.updating_id} />
-                                    <div className={style.formTitle}>
-                                        <input type="text" className={style.addTile} name="updatingTitle" value={updateIdeaForm.updatingTitle} onChange={onChangeUpdateIdeaForm} />
-                                    </div>
-                                    <div className={style.inputIdea}>
-                                        <textarea rows={10} className={style.InputForm} name="updatingDescription" value={updateIdeaForm.updatingDescription} onChange={onChangeUpdateIdeaForm}></textarea>
-                                    </div>
-                                    <div className={style.addInfor}>
-                                        <label>
-                                            <input className={style.public} type="radio" name="option" value="A" checked={selectedOption === 'A'} onChange={handleOptionChange} />
-                                            Public
-                                        </label>
-                                        <label className={style.chooseB}>
-                                            <input className={style.Anonymous} type="radio" name="option" value="B" checked={selectedOption === 'B'} onChange={handleOptionChange} />
-                                            Anonymous
-                                        </label>
-                                        <div className={style.changeColor}>
-                                            <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" className={style.imgChange} />
-                                        </div>
-                                        <div className={style.footerLeftIcon}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <div className={style.submitIdea1}>
-                                        <div className={style.submitIdea2}>
-                                            <button className={style.submitIdea3} type="submit">Update Idea</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={style.footerRight}>
-                                    <button className={style.closeModalCreateIdea} onClick={() => setShowUpdateModal(false)}>Cancel</button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
-                </div>
-            )}
+                )
+            }
 
-            {showDeleteModal && (
-                <div className={style.modalDeleteIdea}>
-                    <div className={style.modalContentDeleteIdea}>
-                        <h2 className={style.containerDelete}>Delete Idea</h2>
-                        <p className={style.contextDeleteIdea}>Are you sure you want to delete your idea? This action cannot be undone.</p>
-                        <button className={style.bntDeleteIdea} onClick={deleteIdea}>Delete</button>
-                        <button className={style.bntcancelIdea} onClick={() => setShowDeleteModal(false)}>Cancel</button>
+            {
+                showDeleteModal && (
+                    <div className={style.modalDeleteIdea}>
+                        <div className={style.modalContentDeleteIdea}>
+                            <h2 className={style.containerDelete}>Delete Idea</h2>
+                            <p className={style.contextDeleteIdea}>Are you sure you want to delete your idea? This action cannot be undone.</p>
+                            <button className={style.bntDeleteIdea} onClick={deleteIdea}>Delete</button>
+                            <button className={style.bntcancelIdea} onClick={() => setShowDeleteModal(false)}>Cancel</button>
+                        </div>
                     </div>
-                </div>
-            )}
+                )
+            }
         </>
     );
 };

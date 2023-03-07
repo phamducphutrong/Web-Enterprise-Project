@@ -3,7 +3,7 @@ import { useState } from "react";
 import { apiUrl } from "../../constants/constants";
 
 const Account = () => {
-    const Roles = ['Administrator', 'QAM', 'QAC', 'Staff'];
+    const Roles = ['QAM', 'QAC', 'Staff'];
     const [createAccountForm, setCreateAccountForm] = useState({
         Username: '',
         Password: '',
@@ -43,9 +43,9 @@ const Account = () => {
                 <input type='password' placeholder="Password" name="Password" value={Password} onChange={onChangeCreateAccountForm} />
                 <select value={Role} name="Role" onChange={onChangeCreateAccountForm}>
                     {
-                        Roles.map((Role, index) => {
+                        Roles.map((Role, index) => (
                             <option key={index} value={Role}>{Role}</option>
-                        })
+                        ))
                     }
                 </select>
                 <button type="submit">Create Account</button>
