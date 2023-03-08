@@ -8,6 +8,7 @@ const ideaRouter = require('./routes/idea')
 const cateRouter = require('./routes/category')
 const commentRouter = require('./routes/comment')
 const fileRouter = require('./routes/file')
+const userRouter = require('./routes/user')
 
 const connectDB = async() => {
     try{
@@ -32,6 +33,7 @@ app.use('/api/idea',ideaRouter)
 app.use('/api/category',cateRouter)
 app.use('/api/comment',commentRouter)
 app.use('/api/file',fileRouter)
+app.use('/api/user', userRouter)
 
 const PORT = 5000
 app.listen(PORT, () => console.log('running'))

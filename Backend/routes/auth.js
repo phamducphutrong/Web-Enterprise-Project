@@ -4,7 +4,6 @@ const argon2 = require('argon2')
 const token = require('jsonwebtoken')
 const Account = require('../models/Account')
 const User = require('../models/User')
-
 //  @route POST api/auth/getAll
 //  @desc Get all accounts
 //  @access Private 
@@ -18,6 +17,7 @@ router.get('/listAccount', async (req, res) => {
     res.json({ success: true, accounts })
 })
 
+
 //  @route POST api/auth/create
 //  @desc Create Account
 //  @access Private 
@@ -30,9 +30,19 @@ router.post('/create', async (req, res) => {
         if (user) return res.status(400).json({ success: false, message: 'Username is exitsted' })
         const hashPassword = await argon2.hash(Password)
         const newAccount = new Account({ Username, Password: hashPassword, Role })
+        const newUser = new User({
+            Name : "User", 
+            Gender: "Male", 
+            PhoneNumber: "0000000000", 
+            DoB: "01-01-1991", Email: "user@gmail.com", 
+            Department: "IT", 
+            Avatar: "User",
+            AccountId: newAccount
+        })
         await newAccount.save()
-        const accessToken = token.sign({ accountId: newAccount._id }, process.env.ACCESS_TOKEN_SECRET)
-        return res.json({ success: true, message: 'Successful', accessToken, newAccount })
+        await newUser.save()
+        const accessToken = token.sign({userId: newAccount._id && newUser._id},process.env.ACCESS_TOKEN_SECRET)
+        return res.json({sucsess:true,message:'Successful',accessToken, newAccount})
     }
     catch (error) {
         console.log(error.message)
@@ -52,10 +62,6 @@ router.post('/login', async (req, res) => {
     try {
         const userValid = await Account.findOne({ Username })
         if (!userValid) {
-            return res.status(400).json({ success: false, message: "Username or password is invalid" })
-        }
-        const passwordValid = await argon2.verify(userValid.Password, Password)
-        if (!passwordValid) {
             return res.status(400).json({ success: false, message: "Username or password is invalid" })
         }
         ({ Role, _id } = userValid)

@@ -2,8 +2,8 @@ POST http://localhost:5000/api/auth/create
 Content-Type: application/json
 
 {
-    "Username": "tungy2s23",
-    "Password": "Manhtung1@",
+    "Username": "TestProfile14",
+    "Password": "testprofile14",
     "Role": "Staff"
 }
 ###
@@ -11,9 +11,9 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "Username": "DUcHung1",
-    "Password": "123456",
-    "Role": "QAM"
+    "Username": "TestProfile14",
+    "Password": "testprofile14",
+    "Role": "Staff"
 }
 ###
 POST http://localhost:5000/api/dataset/createAccount
@@ -32,9 +32,11 @@ POST http://localhost:5000/api/dataset/createIdea
 ###
 POST http://localhost:5000/api/dataset/createComment
 
+
+
 ###
 GET http://localhost:5000/api/idea/home
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3YWE4ZjQwNzdmMjhmODdiZGI1MWYiLCJpYXQiOjE2NzYzMTE5MTB9.sY-2YROtz5vTcaC-VlGwtfdmJFVc7vW_r40_Apvxa1I 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDA2MWExOGVjZDc0YzFmMTA4ZjgzMjQiLCJpYXQiOjE2NzgxMjMwNDh9.CELb38KZ9VpzuRE2WSZrhH_-y9DmaHNpkBk3NUkrpQ8
 
 ### 
 GET http://localhost:5000/api/idea/profile/63e90e898afc6bc67b547656
@@ -104,3 +106,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2U3Y
 ###
 GET http://localhost:5000/api/file/download
 
+###
+GET http://localhost:5000/api/file/downloadzip
+
+###
+GET http://localhost:5000/api/user/myprofile/6407ffc56eb93c28c75cf0d3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NDA3ZmZjNTZlYjkzYzI4Yzc1Y2YwZDIiLCJleHAiOjE2ODA4Mzc5MDUsImlhdCI6MTY3ODI0NTkwNX0.a57YZ-dcoz2UTeOecYRAkq-juUKHxTbiAUShOh-d5FM
+
+###
+
+PUT http://localhost:5000/api/user/updateProfile/6407ffc56eb93c28c75cf0d3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NDA3ZmZjNTZlYjkzYzI4Yzc1Y2YwZDIiLCJleHAiOjE2ODA4Mzc5MDUsImlhdCI6MTY3ODI0NTkwNX0.a57YZ-dcoz2UTeOecYRAkq-juUKHxTbiAUShOh-d5FM
+Content-Type: application/json
+
+{
+    "Name":"Hwng",
+    "Gender":"Male",
+    "PhoneNumber":"0123456789",
+    "DoB": "2002-08-05",
+    "Email": "hung@gmail.com",
+    "Department": "Test",
+    "Avatar": "Test",
+    "AccountId": "64061a18ecd74c1f108f8324"
+}
+
+###
+GET http://localhost:5000/api/profile/search/Test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDA2MWExOGVjZDc0YzFmMTA4ZjgzMjQiLCJpYXQiOjE2NzgxMjE1MDB9.2-T5DSWYRnJlAY4t-w2VyHBbVMy4-ELtsuRqlBoQpJk
