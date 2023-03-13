@@ -116,7 +116,7 @@ const Category = () => {
     event.preventDefault();
     (async () => {
       try {
-        const response = await axios.delete(`${apiUrl}/category/delete/${selectedCategory._id}`);
+        const response = await axios.delete(`${apiUrl}/category/${selectedCategory._id}`);
         if (response.data.success) {
           const filteredCategories = categories.filter(
             (category) => category._id !== selectedCategory._id

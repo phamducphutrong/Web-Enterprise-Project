@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import style from './Body.module.css';
 import axios from 'axios';
-import { apiUrl, ACCOUNT_ID } from "../../constants/constants";
+import { apiUrl, ACCOUNT_ID, PROFILE_INFORMATION } from "../../constants/constants";
 
 Modal.setAppElement("#root");
 
 function Body() {
-    const accountId = localStorage.getItem(ACCOUNT_ID) // lấy id của tài khoản (accountId)
+    const profile_information = JSON.parse(localStorage.getItem(PROFILE_INFORMATION));
+    const userId = profile_information._id;
     const [showActionsModal, setShowActionsModal] = useState(false); // trạng thái của modal hiển thị các hành động (update, delete, download CSV)
     const [showAddModal, setShowAddModal] = useState(false); // trạng thái của modal hiển thị form add
     const [showUpdateModal, setShowUpdateModal] = useState(false); // trạng thái của modal hiển thị form update
@@ -18,7 +19,7 @@ function Body() {
     const [createIdeaForm, setCreateIdeaForm] = useState({ // trạng thái form tạo idea
         Title: '',
         Description: '',
-        UserId: accountId,
+        UserId: userId,
         CategoryId: null
     });
 
@@ -41,7 +42,7 @@ function Body() {
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
-                        UserId: accountId,
+                        UserId: userId,
                         CategoryId: response.data.categories[0]._id
                     });
                 }
@@ -70,7 +71,7 @@ function Body() {
                     setCreateIdeaForm({
                         Title: '',
                         Description: '',
-                        UserId: accountId,
+                        UserId: userId,
                         CategoryId: null
                     });
                     setIdeas([...ideas, response.data.idea]);
@@ -121,8 +122,9 @@ function Body() {
         setShowActionsModal(false);
         (async () => {
             try {
-                const response = await axios.delete(`${apiUrl}/idea/${deleteIdeaId}`);
+                const response = await axios.delete(`${apiUrl}/idea/delete/${deleteIdeaId}`);
                 if (response.data.success) {
+                    console.log(response.data);
                     const afterDeletedIdeas = ideas.filter(idea => idea._id !== deleteIdeaId);
                     setIdeas(afterDeletedIdeas);
                 }

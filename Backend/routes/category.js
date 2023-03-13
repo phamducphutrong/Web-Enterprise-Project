@@ -78,7 +78,7 @@ router.put('/update/:id', async (req, res) => {
 })
 
 //api to delete
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
 	try {
 		const categoryDeleteCondition = { _id: req.params.id }
 		const deletedCategory = await Category.findOneAndDelete(categoryDeleteCondition)

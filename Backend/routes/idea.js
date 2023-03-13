@@ -260,17 +260,13 @@ router.put('/:id', async (req, res) => {
 // @route DELETE api/idea
 // @desc Delete idea
 // @access Private
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   try {
     const ideaDeleteCondition = { _id: req.params.id }
     const deletedIdea = await Idea.findOneAndDelete(ideaDeleteCondition)
 
     // User not authorised or post not found
-    if (!deletedIdea)
-      return res.status(401).json({
-        success: false,
-        message: 'Post not found or user not authorised'
-      })
+    if (!deletedIdea) return res.status(401).json({ success: false, message: 'abcd'})
 
     res.json({ success: true, deletedIdea: deletedIdea })
   } catch (error) {

@@ -31,18 +31,19 @@ router.post('/create', async (req, res) => {
         const hashPassword = await argon2.hash(Password)
         const newAccount = new Account({ Username, Password: hashPassword, Role })
         const newUser = new User({
-            Name : "User", 
-            Gender: "Male", 
-            PhoneNumber: "0000000000", 
-            DoB: "01-01-1991", Email: "user@gmail.com", 
-            Department: "IT", 
+            Name: "User",
+            Gender: "Male",
+            PhoneNumber: "0000000000",
+            DoB: "01-01-1991", 
+            Email: "user@gmail.com",
+            Department: "IT",
             Avatar: "User",
             AccountId: newAccount
         })
         await newAccount.save()
         await newUser.save()
-        const accessToken = token.sign({userId: newAccount._id && newUser._id},process.env.ACCESS_TOKEN_SECRET)
-        return res.json({sucsess:true,message:'Successful',accessToken, newAccount})
+        const accessToken = token.sign({ userId: newAccount._id && newUser._id }, process.env.ACCESS_TOKEN_SECRET)
+        return res.json({ sucsess: true, message: 'Successful', accessToken, newAccount })
     }
     catch (error) {
         console.log(error.message)
